@@ -1,0 +1,1 @@
+{"name": "动吃动吃 · 日常小记", "short_name": "动吃动吃", "start_url": "./", "scope": "./", "display": "standalone", "background_color": "#f8f5ed", "theme_color": "#f8f5ed", "icons": [{"src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"}, {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"}]}

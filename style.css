@@ -129,3 +129,36 @@ h1 em, .closing h2 em { font-family: Georgia, "Songti SC", "STSong", serif; font
   html { scroll-behavior: auto; }
   .journal-card { transition: none; }
 }
+
+
+/* 日志正文与动吃动吃入口沿用网站的浅色、深色主题。 */
+.journal-entry-link { display: flex; flex-direction: column; flex: 1; }
+.journal-entry-link .card-bottom { display: flex; justify-content: space-between; gap: 8px; }
+.project-app-icon { display: block; border-radius: 14px; width: 54px; height: 54px; }
+.project-app:hover h3 { color: var(--accent); }
+.project-app:hover .project-app-icon { transform: rotate(-6deg); }
+.post { max-width: 760px; margin: 0 auto; padding: 70px 0 90px; }
+.post-back { font-size: 13px; color: var(--muted); }
+.post-header { margin: 46px 0 38px; }
+.post-header h1 { font-size: clamp(32px, 4.2vw, 54px); line-height: 1.45; letter-spacing: -.045em; margin: 20px 0; }
+.post-deck { font-size: 17px; color: var(--muted); line-height: 1.9; }
+.post-body { font-size: 16px; line-height: 2.05; }
+.post-body p { margin-bottom: 25px; }
+.post-body h2 { font-size: 23px; font-weight: 600; margin: 42px 0 20px; }
+.post-app-link { display: flex; align-items: center; gap: 20px; padding: 24px; margin: 36px 0 24px; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; }
+.post-app-link img { flex-shrink: 0; width: 70px; height: 70px; border-radius: 17px; }
+.post-app-link strong { display: block; font-size: 22px; font-weight: 600; }
+.post-app-link small { display: block; color: var(--muted); font-size: 13px; line-height: 1.7; margin-top: 4px; }
+.post-app-link .launch-arrow { margin-left: auto; color: var(--accent); font-size: 25px; }
+.post-app-link:hover { border-color: var(--accent); }
+.post-note { font-size: 12px; color: var(--muted); line-height: 1.9; }
+@media (max-width: 640px) {
+  .project-app { grid-template-columns: 46px 1fr; }
+  .project-app-icon { width: 46px; height: 46px; }
+  .post { padding: 38px 0 60px; }
+  .post-header { margin: 32px 0 28px; }
+  .post-deck { font-size: 15px; }
+  .post-body { font-size: 15px; }
+  .post-app-link { padding: 18px; gap: 14px; }
+  .post-app-link img { width: 55px; height: 55px; }
+}
