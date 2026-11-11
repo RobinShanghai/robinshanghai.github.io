@@ -67,10 +67,20 @@ h1 em, .closing h2 em { font-family: Georgia, "Songti SC", "STSong", serif; font
 .interest { display: inline-block; padding: 8px 14px; border: 1px solid var(--line); border-radius: 100px; color: var(--text); }
 .section-topline { display: flex; align-items: end; justify-content: space-between; gap: 24px; }
 .section-description { color: var(--muted); font-size: 14px; }
-.filter-group { display: flex; gap: 8px; margin: 40px 0 24px; }
+.filter-group { display: flex; flex-wrap: wrap; gap: 8px; margin: 40px 0 24px; }
 .filter-chip { color: var(--muted); background: transparent; border: 1px solid var(--line); padding: 8px 22px; border-radius: 100px; font-size: 13px; cursor: pointer; }
 .filter-chip.active { background: var(--text); border-color: var(--text); color: var(--bg); }
 .filter-chip:hover:not(.active) { color: var(--text); }
+.experience-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 22px; }
+.experience-card { display: flex; flex-direction: column; align-items: center; min-width: 0; padding: 18px 12px 20px; border: 1px solid var(--line); border-radius: 4px; background: var(--panel); color: var(--text); text-align: center; cursor: pointer; transition: border-color .2s ease, background-color .2s ease; }
+.experience-card:hover { border-color: var(--accent); }
+.experience-card.active { border-color: var(--accent); background: var(--highlight); box-shadow: inset 0 0 0 1px var(--accent); }
+.experience-art { display: block; width: 144px; max-width: 100%; height: 79px; margin-bottom: 12px; fill: none; stroke: var(--accent); stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; }
+.experience-art .art-fill { fill: var(--accent); fill-opacity: .1; stroke: none; }
+.experience-art .art-faint { opacity: .25; }
+.experience-title { display: block; font-size: 15px; font-weight: 600; }
+.experience-note { display: block; margin-top: 5px; color: var(--muted); font-size: 12px; line-height: 1.7; }
+.journal-status { margin: 0 0 14px; color: var(--muted); font-size: 12px; }
 .journal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
 .journal-card { display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--line); padding: 26px; min-height: 316px; transition: transform .2s ease, border-color .2s ease; }
 .journal-card:hover { transform: translateY(-3px); border-color: var(--accent); }
@@ -97,6 +107,7 @@ h1 em, .closing h2 em { font-family: Georgia, "Songti SC", "STSong", serif; font
 @media (max-width: 900px) {
   .page-shell { padding: 0 28px; }
   .hero { min-height: unset; gap: 24px; }
+  .experience-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .journal-grid { grid-template-columns: repeat(2, 1fr); }
   .journal-card:last-child { grid-column: span 2; min-height: 200px; }
   .card-body { margin-top: 25px; }
@@ -117,6 +128,11 @@ h1 em, .closing h2 em { font-family: Georgia, "Songti SC", "STSong", serif; font
   .large-copy { font-size: 21px; }
   .section-topline { display: block; }
   .section-description { margin-top: 18px; }
+  .experience-grid { gap: 10px; }
+  .experience-card { padding: 14px 9px 16px; }
+  .experience-art { width: 120px; height: 66px; margin-bottom: 10px; }
+  .experience-title { font-size: 14px; }
+  .experience-note { font-size: 11px; }
   .journal-grid { grid-template-columns: 1fr; }
   .journal-card, .journal-card:last-child { grid-column: auto; min-height: 255px; }
   .project-row { grid-template-columns: 28px 1fr; }
@@ -127,7 +143,7 @@ h1 em, .closing h2 em { font-family: Georgia, "Songti SC", "STSong", serif; font
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .journal-card { transition: none; }
+  .journal-card, .experience-card { transition: none; }
 }
 
 
@@ -162,3 +178,4 @@ h1 em, .closing h2 em { font-family: Georgia, "Songti SC", "STSong", serif; font
   .post-app-link { padding: 18px; gap: 14px; }
   .post-app-link img { width: 55px; height: 55px; }
 }
+

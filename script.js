@@ -26,15 +26,17 @@ themeButton.addEventListener('click', () => {
 });
 
 // 第二个功能：筛选公开日志的分类。
-const filterButtons = document.querySelectorAll('.filter-chip');
+const filterButtons = document.querySelectorAll('.filter-chip, .experience-card');
 const journalCards = document.querySelectorAll('.journal-card');
 const emptyMessage = document.querySelector('#emptyMessage');
+const journalStatus = document.querySelector('#journalStatus');
 filterButtons.forEach((button) => {
   button.addEventListener('click', () => {
     const filter = button.dataset.filter;
     let visible = 0;
     journalCards.forEach((card) => {
-      const show = filter === 'all' || card.dataset.category === filter;
+      const topics = (card.dataset.topics || '').split(/\s+/);
+      const show = filter === 'all' || card.dataset.category === filter || topics.includes(filter);
       card.hidden = !show;
       if (show) visible += 1;
     });
@@ -43,9 +45,14 @@ filterButtons.forEach((button) => {
       item.classList.toggle('active', active);
       item.setAttribute('aria-pressed', String(active));
     });
-    emptyMessage.hidden = visible !== 0;
+    if (emptyMessage) emptyMessage.hidden = visible !== 0;
+    if (journalStatus) {
+      const label = button.querySelector('.experience-title')?.textContent || button.textContent.trim();
+      journalStatus.textContent = `${filter === 'all' ? '全部日志' : label} · ${visible} 篇`;
+    }
   });
 });
 
 // 第三个功能：版权年份自动更新。
 document.querySelector('#year').textContent = new Date().getFullYear();
+
