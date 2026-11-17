@@ -9,7 +9,7 @@ function createCharacter(id,seed){const c=cast.find(c=>c.id===id);if(!c)throw Er
 function rand(s){let x=s.rngState;x^=x<<13;x^=x>>>17;x^=x<<5;s.rngState=x>>>0;return s.rngState/4294967296;}
 function ch(label,effect,result,extra={}){return{label,months:6,effect,result,...extra};}
 function scene(s){if(!isNew(s))return old.getScene(s);const step=s.phase==='result'?s.turns-1:s.turns,c=profile(s),u=c.living*3,t=s.traits,f=s.flags,friend=c.friend,mentor=c.mentor;
- const title=['优势，要用在哪里','时代里的第一份预算','你要怎样合作','熟人带来的另一扇门','亲密关系与自己的时间','把天赋练成能力','几年前的选择，回来了','你愿意承担多少风险','被看见之后','一起走过的人','重新定义你的生活','给未来的自己'][step]||'本章回顾';
+ let title=['优势，要用在哪里','时代里的第一份预算','你要怎样合作','熟人带来的另一扇门','亲密关系与自己的时间','把天赋练成能力','几年前的选择，回来了','你愿意承担多少风险','被看见之后','一起走过的人','重新定义你的生活','给未来的自己'][step]||'本章回顾';
  let text='',choices=[];
  if(step===0){text=c.opening;choices=c.paths.map(([label,path,role])=>ch(label,path==='study'?{skills:12,savings:-u,stress:5}:path==='family'?{network:8,family:8,career:8}:path==='venture'?{network:7,savings:-u,freedom:7}:path==='spotlight'?{fame:15,career:8,stress:5}:{health:4,skills:5,family:5},`你开始以「${role}」的身份生活。${mentor}记下你的计划，${friend}也知道了你想走的方向。`,{set:{role},flag:{path}}));}
  if(step===1){text=c.history+'\n'+`回看开局时的环境，${mentor}建议你先决定预算原则。家庭财富不等于随时可以挪用的现金；接下来的支出仍由你选择。`;choices=[ch('留足生活储备，控制新项目投入',{stress:-6,freedom:3},'你给自己留出缓冲，不必为每次机会立刻下注。',{flag:{reserve:true}}),ch('拿出一笔有限预算试验新机会',{savings:-u,skills:5,network:6},'试验规模控制在可承受范围，积累的反馈会影响后续项目。',{flag:{pilot:true}}),ch('先加强专业训练，暂不投入项目',{skills:9,savings:-u/2},'你把这一段时间换成了更扎实的能力。',{flag:{trained:true}}),ch('与家人商定支持边界和个人预算',{family:7,freedom:5},'家人理解了你的安排；支持不意味着他们替你作出每一个决定。',{flag:{boundaries:true}})];}
@@ -28,6 +28,26 @@ function scene(s){if(!isNew(s))return old.getScene(s);const step=s.phase==='resu
  if(step===9){text=`${friend}希望继续自己的计划：${c.friendRole.split('；').slice(1).join('；')||c.friendRole}。${s.relations[1].closeness>=75?'你们早年的合作让这次谈话格外坦诚。':'你们已有一阵子没长谈，需要重新了解彼此。'}${s.partner?'你的伴侣也希望你们留出共同的时间。':''}`;choices=[ch('留出时间相处，听对方需要什么',{family:10,stress:-5},'这次见面没有立刻解决所有问题，但彼此被认真听见。',{bond:1,flag:{reconnected:true}}),ch('共同做一个范围明确的小项目',{network:7,skills:4,savings:-u/3},'熟悉不等于自动合拍，清楚的分工让合作更舒服。',{bond:1,flag:{reconnected:true}}),ch('支持对方独立发展，保持联系',{family:5,freedom:5},'你们允许彼此走不同的路，关系没有因此失去意义。',{bond:1}),ch('坦白自己暂时忙碌，约定以后再聚',{career:5,stress:2},'对方理解你的安排，但未来仍需要你主动兑现。',{flag:{promised:true}})];}
  if(step===10){text=`你的身份已经是${s.role}。${f.love==='together'||f.love==='independent'?'伴侣愿意和你讨论下一阶段的共同生活。':'你的生活有朋友、家人与自己的计划。'}不需要先失去一切，才有资格选择另一种节奏。`;choices=[ch('继续追求专业成就，设好生活边界',{career:10,skills:6,stress:3},'你决定再向前走一段，同时保留必要的休息。',{months:12,income:1.15,flag:{ending:'achievement'}}),ch('保持事业规模，增加家庭与朋友时间',{family:10,health:5,stress:-8},'你珍惜已经拥有的，也开始安排更具体的相处。',{months:12,flag:{ending:'connection'}}),ch('缩减工作，追求旅行与创作',{freedom:12,health:4,savings:-u},'你把一部分收入机会换成自己想亲身经历的生活。',{months:12,income:.85,flag:{ending:'freedom'}}),ch('投入新项目，给好奇心一次机会',{skills:8,network:7,savings:-u},'你又一次成为学习者，这次带着更丰富的经验。',{months:12,flag:{ending:'exploration'}})];}
  if(step===11){text=`${c.goal}，是你出发时写下的愿望。如今你走过${s.history.length}个路口，${f.owned?'拥有了自己可以作主的项目，':''}${f.qualification?'完成了专业进修，':''}${f.reconnected?'也重新靠近过重要的人，':''}这并不意味着人生只能沿同一方向继续。首章到这里，未来仍有空间。`;choices=[ch('记录成就，也记住帮助过我的人',{family:4,stress:-3},'你把这段经历整理成一份诚实的记录。',{flag:{letter:'gratitude'}}),ch('写下想继续学习的事',{skills:3,freedom:3},'你为下一阶段保留了好奇心。',{flag:{letter:'curiosity'}}),ch('给重要的人写信，安排下一次相聚',{family:7},'那些关系有了下一次被认真对待的机会。',{bond:1,flag:{letter:'people'}}),ch('保存这个路口，看看另一种选择会怎样',{freedom:3},'这一条人生仍然保留。你可以读取检查点，让同一个人走另一条路。',{flag:{letter:'possibility'}})];}
+ if(c.id==='chen01'&&step===6){
+ const independent=f.path==='venture'||f.owned;
+ title=independent?'沈宁提出合伙的新条件':f.path==='family'?'父亲交来的第一份独立预算':'周岚的设计团队邀请';
+ text=independent?'品牌已有第一批客户。沈宁希望拥有共同署名与明确的决策权；父亲愿意提供生产资源，但希望订单按工厂流程执行。你可以扩大，也可以保持小而独立。':f.path==='family'?'你已熟悉工厂与客户。父亲陈绍明愿意把一个产品系列交给你，预算独立核算；母亲许蕙要求每季度复盘。周岚则邀请你参与外部品牌的设计工作。':'学习与实践积累成了作品集。周岚愿意让你负责一个小系列；沈宁想和你联合接单，家族工厂也欢迎你带着设计回来。';
+ choices=independent?[
+ ch('与沈宁平等合伙，明确署名与表决规则',{network:8,freedom:5,savings:-u},'你们共同拥有品牌，重大事项需要协商。沈宁开始独立负责设计线。',{months:12,bond:1,income:1.25,set:{role:'共同创办人兼设计负责人'},flag:{business:'partners',owned:true}}),
+ ch('接受家族生产资源，保持品牌单独核算',{family:7,career:10,freedom:-3},'工厂帮助提高交付能力，你承担订单复盘，品牌仍有自己的账本。',{months:12,income:1.4,set:{role:'家族协作品牌负责人'},flag:{business:'factory',owned:true}}),
+ ch('保持个人工作室，按项目与沈宁合作',{freedom:9,skills:6},'你不扩大团队。沈宁保留自己的客户，你们按项目约定署名与报酬。',{months:12,income:1.1,set:{role:'独立设计工作室主理人'},flag:{business:'studio',owned:true}}),
+ ch('暂停扩张，进入成熟团队补足经验',{skills:12,stress:-4},'品牌暂停接新订单，已有合同完成。你去周岚团队学习管理与设计流程。',{months:12,set:{role:'品牌设计师'},flag:{business:'designer',owned:false}})
+ ]:[
+ ch('接管家族产品系列，接受独立业绩核算',{career:12,family:6,stress:5},'你得到真实预算与团队，也开始对产品结果负责。',{months:12,income:1.4,set:{role:'家族产品系列负责人'},flag:{business:'factory'}}),
+ ch('加入周岚团队，以设计作品建立履历',{skills:14,network:5},'家族支持仍在，但这份工作由你的作品与交付决定。',{months:12,income:1.2,set:{role:'品牌设计师'},flag:{business:'designer'}}),
+ ch('与沈宁联合接单，试行共同工作室',{network:8,savings:-u,freedom:7},'你们先做小规模项目，约定各自署名、预算与退出方式。',{months:12,bond:1,income:1.15,set:{role:'共同工作室创办人'},flag:{business:'partners',owned:true}}),
+ ch('保留小规模设计工作，给生活留出时间',{family:8,health:5,stress:-6},'你没有接下管理职位，选择可控制数量的设计委托。',{months:12,set:{role:'自由设计师'},flag:{business:'studio',owned:true,balanced:true}})
+ ];
+ }
+ if(c.id==='chen01'&&step===7&&f.business){
+ title=f.business==='factory'?'产能与品牌的边界':f.business==='partners'?'第一份共同签名的大订单':f.business==='designer'?'设计署名与客户沟通':'工作室的订单上限';
+ text=f.business==='factory'?'工厂接到一份追加订单。母亲许蕙希望你检查产能与交期，沈宁担心赶工挤掉原创设计时间。你可以先试单、重新谈条件、只提供设计，或谢绝本次合作。':f.business==='partners'?'客户认可你与沈宁共同署名的作品，希望扩大订单。沈宁想继续负责设计，你需要决定投入现金还是先用能力参与；之前明确的合伙规则使你们能够平等讨论。':f.business==='designer'?'周岚请你参与客户方案会，沈宁带来一个外部合作邀请。你要先明确本职任务、作品署名与外部项目边界，再决定投入程度。':'工作室已有足够维持日常的委托，沈宁带来更大的合作。扩大规模会改变你原先选择的生活节奏，也可以只提供专业帮助或婉拒。';
+ }
  return{id:'character_'+step,title,tag:step===0?'人物专属 · 起点':step===1?'时代 · 预算':step===2?'人物专属 · 合作':'人生 · 抉择',text,choices,source:step===1?c.source:null};
 }
 function add(s,e){for(const [k,v]of Object.entries(e||{}))s[k]=['savings','salary'].includes(k)?Math.round(s[k]+v):cap(s[k]+v);}
@@ -47,3 +67,4 @@ function validate(s){const c=profile(s);if(!c||s.mode!=='character'||s.name!==c.
 const api={...old,characters:cast,profile,createCharacter,validateCharacter:validate,getScene:scene,choose,next,money:(n,s)=>isNew(s)?(n<0?'−':'')+profile(s).symbol+Math.round(Math.abs(n)).toLocaleString('en-US'):old.money(n),stats:s=>isNew(s)?[...old.stats(s),{key:'freedom',label:'自主权',value:s.freedom},{key:'fame',label:'知名度',value:s.fame}]:old.stats(s)};
 root.LifeEngine=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
+

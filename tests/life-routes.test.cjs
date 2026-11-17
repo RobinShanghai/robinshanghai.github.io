@@ -1,0 +1,5 @@
+const {test}=require('node:test'),a=require('node:assert/strict'),E=require('../life/character-engine.js');
+function route(i){const s=E.createCharacter('chen01',123);for(let j=0;j<6;j++){E.choose(s,j===0?i:0);E.next(s);}return s;}
+test('three early routes open distinct Chen career scenes',()=>{a.equal(new Set([0,1,2].map(i=>E.getScene(route(i)).title)).size,3);});
+test('four career choices yield distinct roles and durable follow-up scenes',()=>{const origin=route(2),roles=new Set(),titles=new Set();for(let i=0;i<4;i++){const s=JSON.parse(JSON.stringify(origin));E.choose(s,i);a.ok(E.validateCharacter(s));roles.add(s.role);const restored=JSON.parse(JSON.stringify(s));E.next(s);E.next(restored);a.deepEqual(s,restored);titles.add(E.getScene(s).title);a.ok(E.validateCharacter(s));for(let j=7;j<12;j++){E.choose(s,0);a.ok(E.validateCharacter(s));if(j<11)E.next(s);}}a.equal(roles.size,4);a.equal(titles.size,4);a.equal(origin.turns,6);});
+test('old character save without business flag remains playable',()=>{const s=route(0);E.choose(s,0);delete s.flags.business;E.next(s);a.ok(E.validateCharacter(s));a.equal(E.getScene(s).choices.length,4);});
