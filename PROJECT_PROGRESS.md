@@ -9,8 +9,8 @@
 - 修复测试发现的资源不足问题：新故事投资节点补“核对报价与工时”非出资路线，现金不足时仍至少3个可用选择。
 - 修改character-engine.js/app.js/index.html/style.css/saves.js/README.md；新增story-events.js/story-engine.js/tests/life-stories.test.cjs。资源版本20261118-v23。
 - 验证：导航2项+故事5项针对性测试通过。四人×4路线完成12重大+4日常；验证长期影响、历史概率复现、旧V2.2原流程一致、日常检查点/分支隔离/导入导出/损坏新字段。
-- 浏览器已验证Ethan新开局→第1日常→保存退出→继续→第2日常；390px iframe视口验证导航可见、日常推进、两个不同自动检查点、读取旧日常创建新分支。是桌面浏览器窄视口测试，不是手机实机。场景图片尚未配置。
-- 部署：本模块测试后提交；核验记录回填代码commit和Pages状态。
+- 浏览器已验证Ethan新开局→第1日常→保存退出→继续→第2日常；390px iframe视口验证导航可见、日常推进、两个不同自动检查点、读取旧日常创建新分支。另验证返回Robin个人网站→点击保留的游戏入口→继续原分支成功。是桌面浏览器窄视口测试，不是手机实机。场景图片尚未配置。
+- 代码提交5c199167b50cba50f08a1a37d6c9e3154b84c05d，已推送main；Pages run44263984303完成success。公开域名life/下index/app/story-events/story-engine/saves/style/character-engine共7文件HTTP读取成功，SHA-256与提交文件逐一相符，V2.3已部署。核验记录另作文档提交。
 
 ### 下一次从这里继续（优先于旧记录）
 1. 读本节、life/story-events.js、story-engine.js和tests/life-stories.test.cjs；不要重做存档/导航/概率引擎。新开试点角色可体验本轮内容，旧分支保持原体验。
