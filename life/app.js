@@ -61,7 +61,10 @@ $('app').addEventListener('click',event=>{
  if(b.dataset.action==='next'){if(state.turns>=LIMIT)page='review';else{const before=JSON.parse(JSON.stringify(state));E.next(state);if(!save())state=before;else checkpoint();}changes=[];render();}
 });
 $('app').addEventListener('change',event=>{if(event.target.id==='categoryFilter'){categoryFilter=event.target.value;render();}if(event.target.id==='decadeFilter'){decadeFilter=event.target.value;render();}if(event.target.id==='genderFilter'){genderFilter=event.target.value;render();}if(event.target.id==='traitFilter'){traitFilter=event.target.value;render();}if(event.target.id==='countryFilter'){countryFilter=event.target.value;render();}});
-$('brand').onclick=e=>{e.preventDefault();page='cover';render();};
+function leaveGame(destination){if(storageError){toast('存档暂不可用，请先导出备份。');return false;}if(state&&!save())return false;if(destination==='robin'){window.location.assign('../');}else{page='cover';tab='story';if($('settings').open)$('settings').close();render();window.scrollTo(0,0);toast('进度已保存，可随时继续当前人生。');}return true;}
+$('brand').onclick=e=>{e.preventDefault();leaveGame('home');};
+$('homeBtn').onclick=()=>leaveGame('home');$('exitBtn').onclick=()=>leaveGame('home');
+$('robinLink').onclick=e=>{e.preventDefault();leaveGame('robin');};
 $('menuBtn').onclick=openSaves;$('closeSettings').onclick=()=>$('settings').close();
 $('fontBtn').onclick=()=>{document.body.classList.toggle('large');try{localStorage.setItem(KEY+'_font',document.body.classList.contains('large')?'large':'normal');}catch{};};
 $('restartBtn').onclick=()=>{try{if(!state){page='cover';render();}else{state=vault.replay();page='game';tab='story';changes=[];checkpoint();render();}$('settings').close();toast('已从相同起点建立新分支，原进度仍保留。');}catch(e){toast(e.message);}};
