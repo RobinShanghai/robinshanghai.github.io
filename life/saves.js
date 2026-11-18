@@ -21,7 +21,7 @@ function create(storage,validate){
   const next=clone(db);const result=fn(next);next.revision++;check(next);storage.setItem(KEY,JSON.stringify(next));db=next;return result;
  }
  function add(d,state,initial,label,parent=null){const b={id:id(),name:name(label),parent,state:clone(state),initial:clone(initial),updated:new Date().toISOString()};d.branches.push(b);d.active=b.id;return clone(b.state);}
- function checkpoint(d,label,kind){const b=d.branches.find(b=>b.id===d.active);if(!b)throw Error('请先开始人生');if(kind==='auto'&&d.slots.some(s=>s.branchId===b.id&&s.kind==='auto'&&s.state.turns===b.state.turns&&s.state.phase===b.state.phase))return;d.slots.push({id:id(),branchId:b.id,name:name(label),kind,state:clone(b.state),created:new Date().toISOString()});}
+ function checkpoint(d,label,kind){const b=d.branches.find(b=>b.id===d.active);if(!b)throw Error('请先开始人生');if(kind==='auto'&&d.slots.some(s=>s.branchId===b.id&&s.kind==='auto'&&s.state.turns===b.state.turns&&s.state.phase===b.state.phase&&(s.state.storyActive||null)===(b.state.storyActive||null)))return;d.slots.push({id:id(),branchId:b.id,name:name(label),kind,state:clone(b.state),created:new Date().toISOString()});}
  return {
   view:()=>clone(db),current:()=>clone(db.branches.find(b=>b.id===db.active)?.state||null),
   start:(s,label)=>tx(d=>add(d,s,s,label)),
@@ -38,3 +38,4 @@ function create(storage,validate){
 }
 root.LifeSaves={create,KEY};if(typeof module!=='undefined')module.exports=root.LifeSaves;
 })(globalThis);
+

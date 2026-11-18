@@ -3,6 +3,7 @@
 const old=typeof module!=='undefined'?require('./engine.js'):root.LifeEngine;
 const cast=typeof module!=='undefined'?require('./adversity.js'):root.LifeCharacters;
 const hardEvent=typeof module!=='undefined'?require('./adversity-events.js'):root.AdversityEvents;
+const storyData=typeof module!=='undefined'?require('./story-events.js'):root.LifeStoryEvents;
 const probability=typeof module!=='undefined'?require('./probability.js'):root.LifeProbability;
 const clone=x=>JSON.parse(JSON.stringify(x)),cap=n=>Math.max(0,Math.min(100,Math.round(n)));
 const traits=['looks','intellect','wealth','status','network','art','sport','social','health'];
@@ -51,6 +52,8 @@ function scene(s){if(!isNew(s))return old.getScene(s);const step=s.phase==='resu
  text=f.business==='factory'?'工厂接到一份追加订单。母亲许蕙希望你检查产能与交期，沈宁担心赶工挤掉原创设计时间。你可以先试单、重新谈条件、只提供设计，或谢绝本次合作。':f.business==='partners'?'客户认可你与沈宁共同署名的作品，希望扩大订单。沈宁想继续负责设计，你需要决定投入现金还是先用能力参与；之前明确的合伙规则使你们能够平等讨论。':f.business==='designer'?'周岚请你参与客户方案会，沈宁带来一个外部合作邀请。你要先明确本职任务、作品署名与外部项目边界，再决定投入程度。':'工作室已有足够维持日常的委托，沈宁带来更大的合作。扩大规模会改变你原先选择的生活节奏，也可以只提供专业帮助或婉拒。';
  }
  if(c.category==='逆境人生'){const specific=hardEvent(s,c,step,ch);if(specific){title=specific.title;text=specific.text;choices=specific.choices;}}
+ if(s.storyVersion===1){const unique=storyData.major(s,c,step,ch);if(unique){title=unique.title;text=unique.text;choices=unique.choices;}}
+ if(s.storyVersion===1&&step===7)choices.push(ch('先核对报价与工时，再决定是否参加',{skills:4,network:2},'你向合作方核对了实际成本与工作量，保留现有工作，没有投入本金。',{months:3,flag:{checkedCosts:true},media:'office'}));
  choices=probability.attach(s,c,step,choices);
  if(s.probabilityVersion===1&&[0,3,5,6,7].includes(step)){const news=probability.active(s).map(e=>e.news);if(news.length)text+='\n当时可见的消息：'+news.join(' ');}
  return{id:'character_'+step,title,tag:step===0?'人物专属 · 起点':step===1?'时代 · 预算':step===2?'人物专属 · 合作':'人生 · 抉择',text,choices,source:step===1?c.source:null};

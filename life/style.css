@@ -10,3 +10,8 @@
 /* Critical navigation remains available at phone widths. */
 .game-nav{display:flex;gap:8px;flex-wrap:wrap}.game-nav button,.game-nav a{font:inherit;font-size:13px;padding:9px 12px;min-height:44px;border:1px solid var(--line);border-radius:6px;background:#faf8f2;color:var(--ink)}
 @media(max-width:760px){.top{flex-wrap:wrap;gap:8px}.game-nav{order:3;flex-basis:100%}.game-nav>*{flex:1;text-align:center;padding:9px 6px!important;font-size:12px!important}#menuBtn{min-height:44px}.top .brand{letter-spacing:0}}
+
+.choice-media{width:64px;height:54px;flex:0 0 64px;position:relative;display:grid;place-items:center;border-radius:6px;overflow:hidden;background:#e4e8df;font-size:25px}.choice-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.choice-media img[hidden]{display:none}.choice-description{display:block;font-size:13px;color:var(--muted);margin-top:4px}.choice-text{min-width:0}.choice .arrow{margin-left:auto}
+@media(max-width:600px){.choice{gap:9px}.choice-media{width:42px;height:44px;flex-basis:42px;font-size:22px}.choice .arrow{display:none}.chapter-line{flex-wrap:wrap}}
+
+.top{position:sticky;top:0;background:var(--paper);z-index:20}
