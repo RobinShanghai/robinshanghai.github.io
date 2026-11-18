@@ -4,7 +4,7 @@ const base=typeof module!=='undefined'?require('./character-engine.js'):root.Lif
 const D=typeof module!=='undefined'?require('./story-events.js'):root.LifeStoryEvents;
 const clone=x=>JSON.parse(JSON.stringify(x)),cap=x=>Math.max(0,Math.min(100,x));
 const schedule=[1,1,6,6],enabled=s=>s?.storyVersion===1;
-function createCharacter(id,seed){const s=base.createCharacter(id,seed);if(D.ids.includes(id))Object.assign(s,{storyVersion:1,storyCursor:0,storyActive:null,dailyHistory:[],storyPeople:[clone(D.people[id])]});return s;}
+function createCharacter(id,seed){const s=base.createCharacter(id,seed);if(D.ids.includes(id))Object.assign(s,{storyVersion:1,storyRevision:2,storyCursor:0,storyActive:null,dailyHistory:[],storyPeople:[clone(D.people[id])]});return s;}
 function openDay(s){if(enabled(s)&&s.phase==='scene'&&schedule[s.storyCursor]===s.turns)s.storyActive=s.characterId+'_daily_'+s.storyCursor;}
 function choose(s,i){if(!enabled(s)||!s.storyActive)return base.choose(s,i);if(s.phase!=='scene')return s;const sc=D.day(s),c=sc.choices[i];if(!c||c.require&&!c.require(s))return s;
  for(const[k,v]of Object.entries(c.effect||{}))s[k]=k==='savings'?Math.round(s[k]+v):cap(s[k]+v);
@@ -12,6 +12,7 @@ function choose(s,i){if(!enabled(s)||!s.storyActive)return base.choose(s,i);if(s
  s.lastResult=c.result;s.dailyHistory.unshift({id:sc.id,date:s.year+'年'+s.month+'月',year:s.year,month:s.month,age:base.ageOf(s),title:sc.title,decision:c.label,result:c.result,savings:s.savings,role:s.role,beforeTurn:s.turns});s.phase='result';return s;}
 function next(s){if(enabled(s)&&s.storyActive&&s.phase==='result'){s.storyActive=null;s.storyCursor++;s.phase='scene';s.currentSceneId='character_'+s.turns;}else base.next(s);openDay(s);return s;}
 function validate(s){if(s?.storyVersion===undefined)return !['storyCursor','storyActive','dailyHistory','storyPeople'].some(k=>s?.[k]!==undefined)&&base.validateCharacter(s);
+ if(s.storyRevision!==undefined&&s.storyRevision!==2)return false;
  if(!enabled(s)||!D.ids.includes(s.characterId)||!Number.isInteger(s.storyCursor)||s.storyCursor<0||s.storyCursor>4||!Array.isArray(s.dailyHistory)||!Array.isArray(s.storyPeople)||s.storyPeople.length!==1)return false;
  const p=s.storyPeople[0],expected=D.people[s.characterId];if(p.name!==expected.name||p.role!==expected.role||!Number.isFinite(p.closeness)||p.closeness<0||p.closeness>100)return false;
  const active=s.storyActive!==null;if(active&&(s.storyActive!==s.characterId+'_daily_'+s.storyCursor||schedule[s.storyCursor]!==s.turns||!['scene','result'].includes(s.phase)))return false;
