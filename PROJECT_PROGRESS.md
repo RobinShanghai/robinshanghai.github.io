@@ -8,7 +8,7 @@
 - 保留旧存档原规则：缺probabilityVersion继续原算法；新字段worldEvents、probabilityLog随完整状态保存，原rngState及saves.js不变。旧分支重玩保持旧规则；从人物列表开新人生使用V2.2。
 - 修改life/character-engine.js、life/index.html（脚本顺序与缓存版本20261118-v22）；新增probability.js、PROBABILITY_AUDIT.md、tests/life-probability.test.cjs；更新本文件。未修改个人网站其余文件，未生成图片。
 - 8项针对性测试通过：14人×4路线青年篇、5节点分布、历史边界及无未来消息、能力/行业差异、五种投资后果、资金门槛、Save/Load相同结果/异选分支隔离/导入导出、损坏新字段、旧公式保留、浏览器式脚本加载。未做本轮真人浏览器或手机实机验收。
-- 部署状态：本记录随代码提交；提交号与Pages结论在后续核验记录中回填，不能把本地测试视为已上线。
+- 代码提交：c0ed781c1ef41c93d3862c837aa46ba857e075ca，已推送main。Pages run44204405452构建与部署success。已从公开域名读取life/index.html、probability.js、character-engine.js，均HTTP 200且SHA-256与提交文件一致；可在线加载V2.2。此次核验不是浏览器交互/手机实机验收。本条核验记录另作文档提交。
 
 ### 下一次 Work 的具体起点（优先于下面历史记录）
 1. 检查main最新提交、本节、life/PROBABILITY_AUDIT.md，再读life/probability.js和tests/life-probability.test.cjs；不要重做人物选择和Save/Load。
