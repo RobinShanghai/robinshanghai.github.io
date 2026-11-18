@@ -1,0 +1,55 @@
+{
+  "game": "人生的变量",
+  "version": "v2.3-scenery-1",
+  "date": "2026-11-18",
+  "assets": [
+    {
+      "media": "theatre",
+      "filename": "life/assets/scene-theatre.jpg",
+      "label": "剧场",
+      "purpose": "剧场排练、演出、试镜",
+      "dimensions": [
+        627,
+        627
+      ],
+      "bytes": 69096,
+      "sha256": "4ee9cf962fe25b43466732e09a9d8440c1073db587f95a2da91daaf122f00df5"
+    },
+    {
+      "media": "pool",
+      "filename": "life/assets/scene-pool.jpg",
+      "label": "泳池",
+      "purpose": "泳将训练、选拔、竞技",
+      "dimensions": [
+        627,
+        627
+      ],
+      "bytes": 122697,
+      "sha256": "00d7892e8c99b6d0bd5ec16abffa6662f2e120726e38d358e0d59ec499768abb"
+    },
+    {
+      "media": "office",
+      "filename": "life/assets/scene-office.jpg",
+      "label": "工作",
+      "purpose": "办公室、项目、合伙和职业",
+      "dimensions": [
+        627,
+        627
+      ],
+      "bytes": 93459,
+      "sha256": "e159bbd1d385a2e892a3483b54700e0fe2c1fade9e2a734b3a74a0821cb8c785"
+    },
+    {
+      "media": "home",
+      "filename": "life/assets/scene-home.jpg",
+      "label": "家庭",
+      "purpose": "家庭相处、居住、普通生活",
+      "dimensions": [
+        627,
+        627
+      ],
+      "bytes": 99164,
+      "sha256": "35f1d3157fb1b971ce69dae1cb1fcd0e5bc6279720c858d9c6e571e348bb803d"
+    }
+  ]
+}

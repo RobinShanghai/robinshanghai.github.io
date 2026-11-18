@@ -5,7 +5,7 @@ const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;',
 let state = null, page = 'cover', tab = 'story', changes = [], timer, selected=null, traitFilter='全部', countryFilter='全部',categoryFilter='全部',decadeFilter='全部',genderFilter='全部';
 const portrait=(c,alt)=>c?.image?`<img src="assets/${c.image}" alt="${esc(alt)}" loading="lazy">`:`<div class="portrait-placeholder" role="img" aria-label="${esc(alt)}，暂未配置肖像"><strong>${esc(c?.name||'人物')}</strong><span>人物档案 · 肖像待补</span></div>`;
 const selectFilter=(id,label,values,value)=>`<label>${label}<select id="${id}" aria-label="${label}">${values.map(x=>`<option ${x===value?'selected':''}>${esc(x)}</option>`).join('')}</select></label>`;
-const mediaCatalog={cafe:{icon:'☕',label:'交谈'},street:{icon:'🚶',label:'街头'},school:{icon:'📚',label:'学习'},office:{icon:'📋',label:'工作'},home:{icon:'⌂',label:'生活'},pool:{icon:'🏊',label:'游泳'},theatre:{icon:'🎭',label:'剧场'},camera:{icon:'📷',label:'摄影'}};
+const mediaCatalog={cafe:{icon:'☕',label:'交谈'},street:{icon:'🚶',label:'街头'},school:{icon:'📚',label:'学习'},office:{icon:'📋',label:'工作',src:'assets/scene-office.jpg'},home:{icon:'⌂',label:'生活',src:'assets/scene-home.jpg'},pool:{icon:'🏊',label:'游泳',src:'assets/scene-pool.jpg'},theatre:{icon:'🎭',label:'剧场',src:'assets/scene-theatre.jpg'},camera:{icon:'📷',label:'摄影'}};
 function choiceMedia(c){const m=mediaCatalog[c.media];if(!m)return '';return `<span class="choice-media" aria-hidden="true"><span>${m.icon}</span>${m.src?'<img src="'+esc(m.src)+'" alt="" loading="lazy" decoding="async">':''}</span>`;}
 $('app').addEventListener('error',e=>{if(e.target.matches?.('.choice-media img'))e.target.hidden=true;},true);
 const M=n=>E.money(n,state);
