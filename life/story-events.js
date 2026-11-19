@@ -1,10 +1,13 @@
 /* Fictional personal stories, using each character's established period and cast.
    No claim that a fictional school, grant, contract or competition is historical fact. */
 (function(root){
-const ids=['ethan73','camille08','jieun97','lin01'];
+const expansion=typeof module!=='undefined'?require('./story-expansion.js'):root.LifeStoryExpansion;
+const ids=['ethan73','camille08','jieun97','lin01',...expansion.ids];
 const people={ethan73:{name:'Marian Cole',role:'地方剧场导演；希望完成一部由社区共同排演的作品',closeness:40},camille08:{name:'Ines Martin',role:'同组泳将；想证明自己的训练方法，也希望保留普通学生生活',closeness:40},jieun97:{name:'金志浩',role:'哥哥；负责家族业务，想建立独立于父亲的管理团队',closeness:40},lin01:{name:'林秀英',role:'奶奶；希望有稳定住处，也希望孙女照顾好自己的生活',closeness:70}};
+Object.assign(people,expansion.people);
 function option(label,effect,result,extra={}){return{label,months:0,effect,result,...extra};}
-function major(s,c,step,ch){if(s.storyVersion!==1||!ids.includes(c.id)||![2,6,9].includes(step))return null;
+function major(s,c,step,ch,existing){if(s.storyVersion!==1||!ids.includes(c.id)||![2,6,9].includes(step))return null;
+ if(expansion.ids.includes(c.id))return expansion.major(s,c,step,ch,existing);
  const f=s.flags,u=c.living;let title,text,choices;
  if(c.id==='ethan73'){
  if(step===2){title='Marian 留下的排练席位';text='广告拍摄后的走廊里，导演 Marian Cole 邀请你排一部小剧场作品。片酬有限，排练时间固定；Ben 的短片也等着你。Nora 可以继续介绍商业试镜，但你无法同时答应所有人。';choices=[ch('接下剧场角色，认真排练',{skills:10,savings:-u,stress:3},'你接下了角色。Marian 把你的名字写进排练表，今后会记得你如何对待这份工作。',{flag:{actorRoute:'theatre',directorTrust:true},media:'theatre'}),ch('选择广告合约，把收入留作底气',{career:7,fame:6,freedom:-3},'Nora 帮你明确拍摄日程。你选择先把租金和学费安排好。',{income:1.2,flag:{actorRoute:'commercial'},media:'camera'}),ch('与 Ben 完成短片，先谈清署名',{network:6,savings:-u/2,freedom:5},'你们写下署名与成本分担；Ben 不再只是替你拍照的朋友。',{bond:1,flag:{actorRoute:'independent'},media:'camera'}),ch('保留社区演出，减少通勤和曝光',{family:6,health:4,stress:-5},'你留出规律的晚餐时间。舞台依然在，但不必成为唯一的生活。',{flag:{actorRoute:'local'},media:'home'})];}
@@ -70,6 +73,7 @@ lin01:[['奶奶留在饭盒里的纸条','奶奶说不用每次都寄钱回来�
  ['同事问能不能帮一个忙','同事临时需要换班，赵敏原本约你整理申请材料。你不能同时出现在两处。',[
  ['保留与老师的约定，说明原因',{skills:4,network:2},'你完成材料核对，同事另找了帮助。',{bond:0,flag:{linReviewed:true},media:'school'}],['帮忙换班，和老师约另一个时间',{family:3,stress:2},'你多承担了一点协调，申请计划没有自动消失。',{media:'office'}],['只帮一段时间，明确结束时间',{network:3,freedom:2},'你提供了能做到的帮助，也留下自己的边界。',{media:'office'}]]]]
 };
+Object.assign(daily,expansion.daily);
 function day(s){const row=daily[s.characterId]?.[s.storyCursor];if(!row)return null;return{id:s.storyActive,title:row[0],text:row[1],tag:'日常 · 生活片刻',daily:true,choices:row[2].map(a=>option(...a))};}
 const api={ids,people,major,day};root.LifeStoryEvents=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
