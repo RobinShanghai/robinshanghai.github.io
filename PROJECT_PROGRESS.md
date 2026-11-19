@@ -6,7 +6,7 @@
 - 场景采用明确白名单，避免把选项的未来目的地当作当前环境：Camille重大索引2/6和daily_1为pool；陈晓雨daily_0/3、佐藤daily_0、林禾daily_0为home。未映射事件保持安静。
 - 同步修正首页“4人新增日常”为“6人拥有专属日常”。其余剧情、人物、图片与个人主页不变。
 - 验证：node --test tests/life-audio.test.cjs tests/life-navigation.test.cjs tests/life-expansion.test.cjs，13项通过；app/audio语法检查通过。覆盖音频生命周期/故障/设置隔离/旧档/分支/浏览器脚本顺序。音频节点采用测试替身；浏览器此前被安全策略阻止，本轮未重新绕行，不声称已听音或完成iPhone实机验收。
-- 修改：life/audio.js、app.js、index.html、style.css、README.md、tests/life-audio.test.cjs、PROJECT_PROGRESS.md。准备提交，随后补记SHA与部署核验。
+- 修改：life/audio.js、app.js、index.html、style.css、README.md、tests/life-audio.test.cjs、PROJECT_PROGRESS.md。代码提交8a21381e3dc90d95288fd12034bbfe7cf8d0445a，已安全推送main；Pages run44435797075完成success。公开index/audio/app/style四文件HTTP 200且SHA-256与提交内容一致，音效模块已部署；实际听感与iPhone仍待验收。
 - 下次起点：先读本节、life/audio.js与tests/life-audio.test.cjs。优先在可用浏览器/iPhone实际试听音量、背景暂停及两种环境声，必要时只调合成参数；不要重写音效/存档。之后继续已记录的Noah/Ana专属剧情与四图裁切验收。
 - 参考：Web Audio用户交互启动实践 https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Best_practices （此前已核对，不重复研究）。
 
