@@ -7,7 +7,7 @@
 - 存档：仅新开陈晓雨/佐藤人生进入已有storyVersion:1/storyRevision:2层；老档不插入日常、不修改RNG/12节点/存储key。存档读写、独立分支、导入导出、相同选择复现及旧两人流程一致均通过。
 - 测试：life-expansion.test.cjs新增5项通过，覆盖2人×5路线完整青年篇、条件门槛与后效、Save/Load和概率分布、旧档、浏览器脚本顺序；原四人故事5项、关系路线2项、素材2项通过，共14项。修复测试中错误地比较函数引用的问题后，仅重跑新增模块5项通过。
 - 修改文件：life/story-expansion.js（新增）、story-events.js（合并数据）、character-engine.js（传入现有节点供陈晓雨增量扩充）、index.html（脚本与缓存版本）、life/README.md、tests/life-expansion.test.cjs（新增）、本文件。未修改概率/存档/UI引擎及个人主页。
-- 提交与部署：准备本模块提交；完成后在本节补记代码SHA及线上核验结果。
+- 代码提交：6f47181d83d5cf06bb4b9c56ce0d82b093023d34，已安全推送main；Pages run44433472348构建与部署success。公开life/下index.html、story-expansion.js、story-events.js、character-engine.js均HTTP 200且SHA-256与提交内容一致；新增模块已上线。此核验不替代浏览器图像/交互验收。
 - 下次Work：先读本节及life/story-expansion.js、tests/life-expansion.test.cjs；若浏览器环境恢复，先验收四图桌面与390px实际卡片显示和失败回退。随后深化同样少量现有角色（优先Noah音乐线、Ana运动逆境线）的具名关系与日常，在story-expansion.js复用结构，每人3重大+4日常；不要重做陈晓雨/佐藤，不增加12重大节点上限。完整人生需另定章节/存档迁移后开展；普通类别和100人仍属后期。
 
 ## V2.4 P2 关系解锁模块（2026-11-19，最新续工）
