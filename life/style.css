@@ -15,3 +15,5 @@
 @media(max-width:600px){.choice{gap:9px}.choice-media{width:42px;height:44px;flex-basis:42px;font-size:22px}.choice .arrow{display:none}.chapter-line{flex-wrap:wrap}}
 
 .top{position:sticky;top:0;background:var(--paper);z-index:20}
+
+.sound-settings{border:1px solid var(--line);border-radius:8px;padding:14px;margin:20px 0}.sound-settings label{display:block;margin:12px 0;font-size:16px}.sound-settings input[type=checkbox]{width:20px;height:20px;vertical-align:middle;margin-right:6px}.sound-settings input[type=range]{width:100%;min-height:44px}.sound-settings output{margin-left:8px}
