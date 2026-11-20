@@ -1,12 +1,13 @@
 /* Fictional personal stories, using each character's established period and cast.
    No claim that a fictional school, grant, contract or competition is historical fact. */
 (function(root){
+const culture=typeof module!=='undefined'?require('./culture-events.js'):root.LifeCultureEvents;
 const expansion=typeof module!=='undefined'?require('./story-expansion.js'):root.LifeStoryExpansion;
 const ids=['ethan73','camille08','jieun97','lin01',...expansion.ids];
 const people={ethan73:{name:'Marian Cole',role:'地方剧场导演；希望完成一部由社区共同排演的作品',closeness:40},camille08:{name:'Ines Martin',role:'同组泳将；想证明自己的训练方法，也希望保留普通学生生活',closeness:40},jieun97:{name:'金志浩',role:'哥哥；负责家族业务，想建立独立于父亲的管理团队',closeness:40},lin01:{name:'林秀英',role:'奶奶；希望有稳定住处，也希望孙女照顾好自己的生活',closeness:70}};
 Object.assign(people,expansion.people);
 function option(label,effect,result,extra={}){return{label,months:0,effect,result,...extra};}
-function major(s,c,step,ch,existing){if(s.storyVersion!==1||!ids.includes(c.id)||![2,6,9].includes(step))return null;
+function personalMajor(s,c,step,ch,existing){if(s.storyVersion!==1||!ids.includes(c.id)||![2,6,9].includes(step))return null;
  if(expansion.ids.includes(c.id))return expansion.major(s,c,step,ch,existing);
  const f=s.flags,u=c.living;let title,text,choices;
  if(c.id==='ethan73'){
@@ -29,7 +30,7 @@ function major(s,c,step,ch,existing){if(s.storyVersion!==1||!ids.includes(c.id)|
  if(step===6){title='赵敏带来的岗位与课程表';text=`赵敏得知一处技术岗位正在收材料，林燕也听说了固定班次的工作。${f.linReviewed?'你们之前核对过材料，这次能把真实做过的任务说明白。':'你需要重新整理成绩、作品与工作记录。'}${f.linStudySpace?'那张折叠桌上的学习没有白费，但机会仍要争取。':'工作经验同样可以写进履历。'}没有人能替你保证录取。`;choices=[ch('提交学习与工作记录，争取技术岗位',{skills:5,stress:4},'你把能证明的经历逐项写进申请，等待实际评审。',{months:12,chance:.45,successSet:{role:'初级技术岗位工作者'},successIncome:1.5,successFlag:{linProfessional:true},media:'school'}),ch('选择稳定班次，继续业余学习',{skills:7,career:5,stress:3},'收入增长有限，学习也慢些，但两条路都还在。',{months:12,income:1.15,set:{role:'边工作边进修的学徒'},flag:{linRoute:'mixed'},media:'office'}),ch('留在熟悉的修理店，争取独立任务',{skills:8,network:4},'你开始负责完整的小任务，用可靠的交付积累口碑。',{months:12,income:1.1,set:{role:'本地修理店熟练学徒'},flag:{linRoute:'local'},media:'office'}),ch('先减少工时，安排奶奶照护与休息',{family:10,health:6,stress:-7},'收入会减少，但这段生活的需要也是真实的。',{months:12,income:.85,flag:{linRoute:'care'},media:'home'})];}
  if(step===9){title='折叠桌该留给谁';text=`林燕想重新安排房间，也希望你认真考虑自己的住处。${f.linProfessional?'新岗位让你有了更多选择，但不必用一次昂贵搬家证明成功。':'你仍在安排收入和生活，堂姐愿意讨论实际能承担的方案。'}奶奶说，见面不一定要带贵重东西。`;choices=[ch('预算足够时搬到独立住处',{savings:-u*2,freedom:9,stress:2},'你支付了一次搬家与押金支出，得到独立空间；生活费暂按原模型计。',{require:x=>x.savings>=u*3,requireText:'至少留出三个月生活费的现金',flag:{linHome:'independent'},media:'home'}),ch('继续合住，重新约定开销和私人空间',{family:7,freedom:4},'你们更新了约定，没有把合住看作失败。',{bond:1,flag:{linHome:'shared'},media:'home'}),ch('带一顿家常饭回去陪奶奶',{family:10,stress:-5},'她更想知道你最近过得怎样。晚饭没有改变收入，却让关系更近。',{media:'home'}),ch('请赵敏与林燕吃一顿简单的感谢饭',{network:5,family:5},'大家谈起各自的计划，帮助过你的人也有需要被听见的生活。',{bond:0,media:'cafe'})];}
  }
- if(step===9&&s.storyRevision===2){
+ if(step===9&&[2,3].includes(s.storyRevision)){
  const extra={
  ethan73:()=>ch('与 Marian 共同带一次社区排练',{skills:6,network:5,family:3},'你把当年得到的指导交给新人。Marian 让你共同安排排练，持续合作成为一份小而稳定的收入。',{require:x=>x.flags.directorTrust&&x.storyPeople[0].closeness>=50,requireText:'曾建立导演信任，且与 Marian 亲近度≥50',income:1.08,flag:{actorTeaching:true},media:'theatre'}),
  camille08:()=>ch('与 Ines 联合开设俱乐部入门课',{skills:5,network:6},'训练笔记变成了适合新人的课程。你们分担教学，而不是承诺每个学员都能取得比赛名次。',{require:x=>x.flags.swimNotes&&x.storyPeople[0].closeness>=50,requireText:'曾交换训练笔记，且与 Ines 亲近度≥50',income:1.1,flag:{swimTeaching:true},media:'pool'}),
@@ -74,6 +75,7 @@ lin01:[['奶奶留在饭盒里的纸条','奶奶说不用每次都寄钱回来�
  ['保留与老师的约定，说明原因',{skills:4,network:2},'你完成材料核对，同事另找了帮助。',{bond:0,flag:{linReviewed:true},media:'school'}],['帮忙换班，和老师约另一个时间',{family:3,stress:2},'你多承担了一点协调，申请计划没有自动消失。',{media:'office'}],['只帮一段时间，明确结束时间',{network:3,freedom:2},'你提供了能做到的帮助，也留下自己的边界。',{media:'office'}]]]]
 };
 Object.assign(daily,expansion.daily);
-function day(s){const row=daily[s.characterId]?.[s.storyCursor];if(!row)return null;return{id:s.storyActive,title:row[0],text:row[1],tag:'日常 · 生活片刻',daily:true,choices:row[2].map(a=>option(...a))};}
-const api={ids,people,major,day};root.LifeStoryEvents=api;if(typeof module!=='undefined')module.exports=api;
+function major(s,c,step,ch,existing){const result=personalMajor(s,c,step,ch,existing);return step===9&&result?culture.revisit(s,result,ch):result;}
+function day(s){if(culture.enabled(s)&&s.storyCursor===2)return culture.day(s);const cursor=s.storyCursor-(culture.enabled(s)&&s.storyCursor>2?1:0);const row=daily[s.characterId]?.[cursor];if(!row)return null;return{id:s.storyActive,title:row[0],text:row[1],tag:'日常 · 生活片刻',daily:true,choices:row[2].map(a=>option(...a))};}
+const api={ids,people,major,day,cultureIds:culture.ids};root.LifeStoryEvents=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);

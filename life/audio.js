@@ -3,7 +3,7 @@
 const KEY='life_variables_audio_v1';
 function sceneFor(s){
  if(!s||s.phase!=='scene')return null;
- if(s.storyActive){if(s.storyActive==='camille08_daily_1')return 'pool';if(['chen01_daily_0','chen01_daily_3','yusuke91_daily_0','lin01_daily_0'].includes(s.storyActive))return 'home';return null;}
+ if(s.storyActive){const active=s.storyRevision===3&&s.characterId==='chen01'&&s.storyCursor>=3?'chen01_daily_'+(s.storyCursor-1):s.storyActive;if(active==='camille08_daily_1')return 'pool';if(['chen01_daily_0','chen01_daily_3','yusuke91_daily_0','lin01_daily_0'].includes(active))return 'home';return null;}
  return s.storyVersion===1&&s.characterId==='camille08'&&[2,6].includes(s.turns)?'pool':null;
 }
 function create(env={}){

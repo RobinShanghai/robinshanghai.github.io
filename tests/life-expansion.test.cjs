@@ -1,4 +1,5 @@
-const {test}=require('node:test'),a=require('node:assert/strict'),E=require('../life/story-engine.js'),B=require('../life/character-engine.js'),S=require('../life/saves.js'),fs=require('node:fs'),vm=require('node:vm');
+// Published revision-2 regression suite; revision 3 is covered by life-culture.test.cjs.
+const {test}=require('node:test'),a=require('node:assert/strict'),engine=require('../life/story-engine.js'),E={...engine,createCharacter:(...args)=>{const s=engine.createCharacter(...args);if(s.storyRevision===3)s.storyRevision=2;return s;}},B=require('../life/character-engine.js'),S=require('../life/saves.js'),fs=require('node:fs'),vm=require('node:vm');
 const copy=x=>JSON.parse(JSON.stringify(x));
 function advance(s,n=0){const cs=E.getScene(s).choices;if(cs[n].require&&!cs[n].require(s))n=cs.findIndex(c=>!c.require||c.require(s));E.choose(s,n);a.ok(E.validateCharacter(s));E.next(s);a.ok(E.validateCharacter(s));}
 function reach(s,n){while(s.turns<n||s.storyActive)advance(s);return s;}
