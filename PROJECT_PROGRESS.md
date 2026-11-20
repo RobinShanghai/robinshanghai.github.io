@@ -4,7 +4,7 @@
 - adversity.js关联6个新文件，人物详情的性格介绍加入各自兴趣、沟通习惯和家庭边界；新开局写入新性格，旧档保留原性格，按characterId自动获得肖像。没有修改概率、关系数值、剧情、存档结构或分支行为。index仅更新adversity脚本缓存版本。
 - 原人物卡片/详情的object-fit与懒加载保持。已逐张查看生成肖像、确认头部留白，检查640方图和响应式样式；此前浏览器安全策略阻止预览，本轮未重试，桌面/手机实际裁切验收仍待完成。
 - 测试：node --test tests/life-portraits.test.cjs tests/life-adversity.test.cjs，8项通过；覆盖14个唯一肖像路径、6个JPEG、旧档性格与RNG完整恢复、同选项复现、6人完整青年篇、分支保存/导入及条件筛选。
-- 修改：life/adversity.js、index.html、README.md、assets/portrait-*.jpg（6张）、assets/PORTRAIT_ASSET_MANIFEST.json、tests/life-portraits.test.cjs、本文件。待提交并验证公开部署；准确SHA在部署核验后补记。
+- 修改：life/adversity.js、index.html、README.md、assets/portrait-*.jpg（6张）、assets/PORTRAIT_ASSET_MANIFEST.json、tests/life-portraits.test.cjs、本文件。代码提交7f9f6c8987ae8006bed87f2ebd6888293c22d072，已安全推送main。Pages run44644105518完成success；公开index/adversity及6张肖像均HTTP 200且SHA-256匹配，已上线。
 - 下次起点：先读本节、life/story-expansion.js和tests/life-expansion.test.cjs。肖像已补齐，不再重复生成。优先推进Ana与Noah的具名关系与日常：按现有结构每人3重大+4日常，保留12重大节点及旧档版本隔离。真实浏览器可用时补桌面/手机裁切与音效试听验收。
 
 ## V2.4 音效模块（2026-11-19，最新）
