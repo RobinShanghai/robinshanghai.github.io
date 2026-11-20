@@ -1,3 +1,12 @@
+## V2.4 六位逆境人物肖像与性格（2026-11-20，最新）
+- 基线main 7438f160bf030c64800514904ef6bedade561fe0，核对最新提交未变。14人（8优势、6逆境）中缺图的6人是林禾、Samuel Reed、Ruth Evans、森明、徐恩秀、Ana Souza。已有候选素材核对后发现属于原优势角色，未重复使用他们的脸。
+- 新增6张独立AI写实虚构肖像，按开局年份、地区和工作/生活环境创作；640×640 JPEG，单张54—83KB，总计372505字节。保留原8人肖像与4场景图。assets/PORTRAIT_ASSET_MANIFEST.json保存提示词、尺寸、SHA-256及来源；不是历史照片。
+- adversity.js关联6个新文件，人物详情的性格介绍加入各自兴趣、沟通习惯和家庭边界；新开局写入新性格，旧档保留原性格，按characterId自动获得肖像。没有修改概率、关系数值、剧情、存档结构或分支行为。index仅更新adversity脚本缓存版本。
+- 原人物卡片/详情的object-fit与懒加载保持。已逐张查看生成肖像、确认头部留白，检查640方图和响应式样式；此前浏览器安全策略阻止预览，本轮未重试，桌面/手机实际裁切验收仍待完成。
+- 测试：node --test tests/life-portraits.test.cjs tests/life-adversity.test.cjs，8项通过；覆盖14个唯一肖像路径、6个JPEG、旧档性格与RNG完整恢复、同选项复现、6人完整青年篇、分支保存/导入及条件筛选。
+- 修改：life/adversity.js、index.html、README.md、assets/portrait-*.jpg（6张）、assets/PORTRAIT_ASSET_MANIFEST.json、tests/life-portraits.test.cjs、本文件。待提交并验证公开部署；准确SHA在部署核验后补记。
+- 下次起点：先读本节、life/story-expansion.js和tests/life-expansion.test.cjs。肖像已补齐，不再重复生成。优先推进Ana与Noah的具名关系与日常：按现有结构每人3重大+4日常，保留12重大节点及旧档版本隔离。真实浏览器可用时补桌面/手机裁切与音效试听验收。
+
 ## V2.4 音效模块（2026-11-19，最新）
 - 基线main 8ff2de1d1cde712d67464f52bb3a3cca163bbd93。用户明确要求修改代码加入音效。
 - 新增life/audio.js：选择确认、翻页、手动保存成功三种短提示；家庭钟声/泳池水声两种程序合成场景示意，非现场录音。无需下载音频、收费服务或第三方素材，未引入外部版权音源。

@@ -1,0 +1,61 @@
+{
+  "date": "2026-11-20",
+  "source": "OpenAI image generation; fictional AI-generated portraits, not historical photographs",
+  "processing": "640x640 JPEG, quality 82, metadata stripped; original images retained",
+  "assets": [
+    {
+      "characterId": "lin01",
+      "file": "portrait-lin01.jpg",
+      "prompt": "Square photorealistic documentary character portrait for fictional life simulator. Lin He, 18 year old Chinese woman in Anhui in 2001, tied black hair, blue cotton shirt, math notebook, simple rented room. Centered chest-up, whole head with generous headroom. Natural skin, soft daylight, subtle period color film. Individual, capable, dignified, gentle expression. Modest everyday clothing. No poverty caricature, no cartoon, no text, no logos, no modern devices. Distinct fictional face.",
+      "bytes": 54961,
+      "sha256": "d43a5d04c6ad7b9bc1304e250cb1a5f2f0e4f19b4bac03a4b061a149093a9a1c",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "characterId": "sam73",
+      "file": "portrait-sam73.jpg",
+      "prompt": "Square photorealistic documentary character portrait for fictional life simulator. Samuel Reed, 18 year old American man in Erie Pennsylvania 1973, straight light brown hair, freckles, rust work shirt, car repair workshop. Centered chest-up, whole head with generous headroom. Natural skin, soft daylight, subtle period color film. Individual, capable, dignified, gentle expression. Modest everyday clothing. No poverty caricature, no cartoon, no text, no logos, no modern devices. Distinct fictional face.",
+      "bytes": 62004,
+      "sha256": "f7373b602cba91a6f17241c6bcbb8de573782af594f4a9ddb6bc331891639784",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "characterId": "ruth73",
+      "file": "portrait-ruth73.jpg",
+      "prompt": "Square photorealistic documentary character portrait for fictional life simulator. Ruth Evans, 18 year old British woman Birmingham 1973, auburn hair fringe, mustard cardigan, laundry window and book bag. Centered chest-up, whole head with generous headroom. Natural skin, soft daylight, subtle period color film. Individual, capable, dignified, gentle expression. Modest everyday clothing. No poverty caricature, no cartoon, no text, no logos, no modern devices. Distinct fictional face.",
+      "bytes": 83265,
+      "sha256": "56c298d7ed4b4ae1a6d4b77d16319d88cc27a032a1180906bf6a05ca08d294ac",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "characterId": "aki91",
+      "file": "portrait-aki91.jpg",
+      "prompt": "Square photorealistic documentary character portrait for fictional life simulator. Mori Akira, 18 year old Japanese man Osaka 1991, short black hair, thin round glasses, subtle beige hearing aid, olive shirt, electronics workbench. Centered chest-up, whole head with generous headroom. Natural skin, soft daylight, subtle period color film. Individual, capable, dignified, gentle expression. Modest everyday clothing. No poverty caricature, no cartoon, no text, no logos, no modern devices. Distinct fictional face.",
+      "bytes": 54364,
+      "sha256": "ef4b46d952745d7a6a01ae80fcb0cda53e03340958461eac5dbbf0bf312637fb",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "characterId": "seo97",
+      "file": "portrait-seo97.jpg",
+      "prompt": "Square photorealistic documentary character portrait for fictional life simulator. Seo Eun-su, 18 year old Korean woman Busan 1997, low ponytail, burgundy coat, paper ledger, small delivery storefront. Centered chest-up, whole head with generous headroom. Natural skin, soft daylight, subtle period color film. Individual, capable, dignified, gentle expression. Modest everyday clothing. No poverty caricature, no cartoon, no text, no logos, no modern devices. Distinct fictional face.",
+      "bytes": 61552,
+      "sha256": "20ff4b613f8279568e91ac0104555342c7ea18fa773e46daa915dc499aaf241d",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "characterId": "ana94",
+      "file": "portrait-ana94.jpg",
+      "prompt": "Square photorealistic documentary character portrait for fictional life simulator. Ana Souza, 18 year old Brazilian woman Sao Paulo 1994, dark brown skin, tied curly hair, forest green athletic tee, community running track. Centered chest-up, whole head with generous headroom. Natural skin, soft daylight, subtle period color film. Individual, capable, dignified, gentle expression. Modest everyday clothing. No poverty caricature, no cartoon, no text, no logos, no modern devices. Distinct fictional face.",
+      "bytes": 56359,
+      "sha256": "d9b7d0b7117300ea34832c70ccba10d7447194d533956f062bdec834d103a4f7",
+      "width": 640,
+      "height": 640
+    }
+  ]
+}
