@@ -1,10 +1,17 @@
+## V2.4 四人亲密关系深化（2026-11-21）
+- 基线b2ce4e24d1235f864a24c4b25f8751ee5c0293e3。上次文化模块代码已部署，仅部署记录提交中断；本次保留并补入核验记录。四场景图已配置，无重复生成。
+- 新模块relationship-events.js：Ethan排练与外貌期待、Camille训练恢复、金智恩家族身份、林禾班次与预算；第5重大节点各5选项，第5项由之前沟通/自我观察经历解锁，第10节点回访选择并影响压力与回顾标记。
+- 新开四人flags.relationshipVersion='1'启用；旧档缺字段保持原流程。关系选择与长期标记进入既有保存结构，不改概率与节点数量。首次发现数值版本不符合flags校验，改为字符串后通过。
+- 测试：stories/culture/relationship-routes共11项及新增relationship-depth 1项通过。无浏览器实机验收。仍18岁开局，未实现出生/小学、完整心理模型。
+- 下次先读relationship-events.js与新增测试，设计童年章节和旧档隔离后做一人试点；不要重做图片、文化或存档。此次提交SHA见本节对应Git提交；部署待核验。
+
 ## V2.4 信念与环境压力试点（2026-11-20，最新续工）
 - 基线main af1de07145e38e7024113a17061e1043e1096082，保留14人物、全部肖像、原场景图/音效/存档。用户新增方向：童年与社会环境影响情绪和应对，并加入不同文化的命理/占星体验。
 - 已查证文化资料并写入life/CULTURE_NOTES.md，区分习俗存在与预测效力、当代调查与历史背景。印度仅整理资料，当前无对应角色；不按种族统一设置信仰，也不写入用户朋友的私人经历。
 - 新增culture-events.js：陈晓雨“饭桌上的生辰纸条”、佐藤“晴天里的一张御神签”、Ethan“Ben圈出的星座专栏”。各4选项，现实压力/自由/关系/技能等有差异；已有支持或边界经历与stress改变当下叙述。第10重大节点回访选择并允许重新调整应对（总选项不超过6）。文化解释不修改概率、RNG或历史事件；无亲密行为自动惩罚。
 - 新开3人storyRevision:3，日常时序[1,1,4,6,6]，原4日常全部保留，总日常27件；旧revision缺省/2保持[1,1,6,6]。完整状态通过原存档flags保存，不更改存储key。同步修正陈晓雨顺移日常的音效映射；旧关系解锁适用于revision3。
 - 测试22项通过：culture新增4、stories5、expansion5、relationship-routes2、audio6。原剧情测试显式使用revision2，新增测试覆盖revision3的3人×4路线、12重大+5日常、记忆与压力、回访、RNG不变、存读/分支/导出/旧档和音效映射。首次命令工作目录错误，改动未执行导致旧计数测试失败；修正路径并完成预期版本隔离后通过。未重跑无关肖像或全站测试。
-- 修改culture-events.js（新增）、CULTURE_NOTES.md（新增）、story-events.js、story-engine.js、audio.js、index.html、README.md、4个剧情测试文件、本文件。待提交并核验Pages部署。浏览器实机验收仍待完成。
+- 修改culture-events.js（新增）、CULTURE_NOTES.md（新增）、story-events.js、story-engine.js、audio.js、index.html、README.md、4个剧情测试文件、本文件。代码提交b2ce4e24d1235f864a24c4b25f8751ee5c0293e3，已安全推送main。Pages run44657423359完成success；公开index/culture-events/story-events/story-engine/audio均HTTP 200且SHA-256匹配，部署已核验。浏览器实机验收仍待完成。
 - 下次Work起点：先读本节与CULTURE_NOTES.md、story-engine.js，优先制定出生/小学章节的版本与迁移方案，再在一位现有人物试点童年经历→当前情绪→应对选择。当前仍18岁开局，未实现童年、完整心理模型或Robin角色；不能声称已完成。后续再扩展英国/印度文化事件与Ana/Noah专属日常，不重复生成肖像或重写概率。
 
 ## V2.4 六位逆境人物肖像与性格（2026-11-20，最新）

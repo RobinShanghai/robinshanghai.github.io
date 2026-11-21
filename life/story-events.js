@@ -1,6 +1,7 @@
 /* Fictional personal stories, using each character's established period and cast.
    No claim that a fictional school, grant, contract or competition is historical fact. */
 (function(root){
+const relationship=typeof module!=='undefined'?require('./relationship-events.js'):root.LifeRelationshipEvents;
 const culture=typeof module!=='undefined'?require('./culture-events.js'):root.LifeCultureEvents;
 const expansion=typeof module!=='undefined'?require('./story-expansion.js'):root.LifeStoryExpansion;
 const ids=['ethan73','camille08','jieun97','lin01',...expansion.ids];
@@ -75,7 +76,7 @@ lin01:[['奶奶留在饭盒里的纸条','奶奶说不用每次都寄钱回来�
  ['保留与老师的约定，说明原因',{skills:4,network:2},'你完成材料核对，同事另找了帮助。',{bond:0,flag:{linReviewed:true},media:'school'}],['帮忙换班，和老师约另一个时间',{family:3,stress:2},'你多承担了一点协调，申请计划没有自动消失。',{media:'office'}],['只帮一段时间，明确结束时间',{network:3,freedom:2},'你提供了能做到的帮助，也留下自己的边界。',{media:'office'}]]]]
 };
 Object.assign(daily,expansion.daily);
-function major(s,c,step,ch,existing){const result=personalMajor(s,c,step,ch,existing);return step===9&&result?culture.revisit(s,result,ch):result;}
+function major(s,c,step,ch,existing){const result=personalMajor(s,c,step,ch,existing);const combined=step===9&&result?culture.revisit(s,result,ch):result;return relationship.apply(s,step,combined||existing,ch);}
 function day(s){if(culture.enabled(s)&&s.storyCursor===2)return culture.day(s);const cursor=s.storyCursor-(culture.enabled(s)&&s.storyCursor>2?1:0);const row=daily[s.characterId]?.[cursor];if(!row)return null;return{id:s.storyActive,title:row[0],text:row[1],tag:'日常 · 生活片刻',daily:true,choices:row[2].map(a=>option(...a))};}
 const api={ids,people,major,day,cultureIds:culture.ids};root.LifeStoryEvents=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
