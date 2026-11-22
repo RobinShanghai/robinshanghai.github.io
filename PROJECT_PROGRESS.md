@@ -4,7 +4,7 @@
 - Ethan：导演机会与Ben的创作/赴约；金智恩：兄长压力、素妍选片与资源边界；林禾：奶奶回信、林燕班次、费用与休息。实际影响技能、关系、压力、自由、健康；第7/10重大节点回访，上述回应进入人生手记。没有把所有日常改成事业跳板。
 - 新开三人flags.dialogueVersion='1'启用。旧档没有字段，维持原选项。沿用原节点/日常时序、RNG和存储key，未接收费AI或自由文本；对话中间可以保存、分支与导出。
 - 测试18项通过：新增3项涵盖27条组合完整青年篇、9种前情与27个唯一选项、无额外随机消耗、原选项保留、长期回访、存读分支导出和旧档；并验证culture/stories/relationship-depth/expansion。原stories测试显式关闭新对话字段作为旧版回归。浏览器脚本顺序测试通过；未完成手机实机验收。
-- 文件：dialogue-events.js新增、story-events.js、story-engine.js、index.html、README.md、tests/life-dialogue.test.cjs新增、tests/life-stories.test.cjs、本记录。待安全提交及部署核验；提交SHA见该模块Git提交。
+- 文件：dialogue-events.js新增、story-events.js、story-engine.js、index.html、README.md、tests/life-dialogue.test.cjs新增、tests/life-stories.test.cjs、本记录。代码提交9cd8a95f89eb2f57f1dfdbb89bd9217aa1d53954，已安全推送main。Pages run44967237570完成success；公开dialogue-events/story-events/story-engine/index内容SHA-256与本地一致，已上线。
 - 下次起点：先读本节、dialogue-events.js与life-dialogue.test.cjs。继续把Camille运动/休息与金智恩或林禾后期日常做成连续回应；原3人已有对话不要重做。出生/小学章节和完整心理模型仍未实现，须另做版本与迁移方案后小规模试点。仍18岁开局，不扩人物/不重复生成图片。
 
 ## V2.4 四人亲密关系深化（2026-11-21）
