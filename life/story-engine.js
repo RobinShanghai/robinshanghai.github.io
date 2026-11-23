@@ -4,7 +4,7 @@ const base=typeof module!=='undefined'?require('./character-engine.js'):root.Lif
 const D=typeof module!=='undefined'?require('./story-events.js'):root.LifeStoryEvents;
 const clone=x=>JSON.parse(JSON.stringify(x)),cap=x=>Math.max(0,Math.min(100,x));
 const scheduleOf=s=>s.storyRevision===3?[1,1,4,6,6]:[1,1,6,6],enabled=s=>s?.storyVersion===1;
-function createCharacter(id,seed){const s=base.createCharacter(id,seed);if(D.ids.includes(id))Object.assign(s,{storyVersion:1,storyRevision:D.cultureIds.includes(id)?3:2,storyCursor:0,storyActive:null,dailyHistory:[],storyPeople:[clone(D.people[id])]});if(['ethan73','camille08','jieun97','lin01'].includes(id))s.flags.relationshipVersion='1';if(['ethan73','jieun97','lin01'].includes(id))s.flags.dialogueVersion='1';return s;}
+function createCharacter(id,seed){const s=base.createCharacter(id,seed);if(D.ids.includes(id))Object.assign(s,{storyVersion:1,storyRevision:D.cultureIds.includes(id)?3:2,storyCursor:0,storyActive:null,dailyHistory:[],storyPeople:[clone(D.people[id])]});if(['ethan73','camille08','jieun97','lin01'].includes(id))s.flags.relationshipVersion='1';if(['ethan73','jieun97','lin01'].includes(id))s.flags.dialogueVersion='1';if(['noah73','maya94','lukas89','sam73','ruth73','aki91','seo97','ana94'].includes(id))s.flags.castDepthVersion='1';return s;}
 function openDay(s){if(enabled(s)&&s.phase==='scene'&&scheduleOf(s)[s.storyCursor]===s.turns)s.storyActive=s.characterId+'_daily_'+s.storyCursor;}
 function choose(s,i){if(!enabled(s)||!s.storyActive)return base.choose(s,i);if(s.phase!=='scene')return s;const sc=D.day(s),c=sc.choices[i];if(!c||c.require&&!c.require(s))return s;
  for(const[k,v]of Object.entries(c.effect||{}))s[k]=k==='savings'?Math.round(s[k]+v):cap(s[k]+v);

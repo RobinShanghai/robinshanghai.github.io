@@ -5,6 +5,7 @@ const cast=typeof module!=='undefined'?require('./adversity.js'):root.LifeCharac
 const hardEvent=typeof module!=='undefined'?require('./adversity-events.js'):root.AdversityEvents;
 const storyData=typeof module!=='undefined'?require('./story-events.js'):root.LifeStoryEvents;
 const probability=typeof module!=='undefined'?require('./probability.js'):root.LifeProbability;
+const depth=typeof module!=='undefined'?require('./cast-depth.js'):root.LifeCastDepth;
 const clone=x=>JSON.parse(JSON.stringify(x)),cap=n=>Math.max(0,Math.min(100,Math.round(n)));
 const traits=['looks','intellect','wealth','status','network','art','sport','social','health'];
 const isNew=s=>s?.version===2,profile=s=>cast.find(c=>c.id===s?.characterId);
@@ -54,6 +55,7 @@ function scene(s){if(!isNew(s))return old.getScene(s);const step=s.phase==='resu
  if(c.category==='逆境人生'){const specific=hardEvent(s,c,step,ch);if(specific){title=specific.title;text=specific.text;choices=specific.choices;}}
  if(s.storyVersion===1){const unique=storyData.major(s,c,step,ch,{title,text,choices});if(unique){title=unique.title;text=unique.text;choices=unique.choices;}}
  if(s.storyVersion===1&&step===7)choices.push(ch('先核对报价与工时，再决定是否参加',{skills:4,network:2},'你向合作方核对了实际成本与工作量，保留现有工作，没有投入本金。',{months:3,flag:{checkedCosts:true},media:'office'}));
+ const deep=depth.apply(s,c,step,ch,{title,text,choices});({title,text,choices}=deep);
  choices=probability.attach(s,c,step,choices);
  if(s.probabilityVersion===1&&[0,3,5,6,7].includes(step)){const news=probability.active(s).map(e=>e.news);if(news.length)text+='\n当时可见的消息：'+news.join(' ');}
  return{id:'character_'+step,title,tag:step===0?'人物专属 · 起点':step===1?'时代 · 预算':step===2?'人物专属 · 合作':'人生 · 抉择',text,choices,source:step===1?c.source:null};
