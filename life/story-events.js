@@ -5,11 +5,12 @@ const dialogue=typeof module!=='undefined'?require('./dialogue-events.js'):root.
 const relationship=typeof module!=='undefined'?require('./relationship-events.js'):root.LifeRelationshipEvents;
 const culture=typeof module!=='undefined'?require('./culture-events.js'):root.LifeCultureEvents;
 const expansion=typeof module!=='undefined'?require('./story-expansion.js'):root.LifeStoryExpansion;
-const ids=['ethan73','camille08','jieun97','lin01',...expansion.ids];
+const castDaily=typeof module!=='undefined'?require('./cast-daily.js'):root.LifeCastDaily;
+const ids=['ethan73','camille08','jieun97','lin01',...expansion.ids,...castDaily.ids];
 const people={ethan73:{name:'Marian Cole',role:'地方剧场导演；希望完成一部由社区共同排演的作品',closeness:40},camille08:{name:'Ines Martin',role:'同组泳将；想证明自己的训练方法，也希望保留普通学生生活',closeness:40},jieun97:{name:'金志浩',role:'哥哥；负责家族业务，想建立独立于父亲的管理团队',closeness:40},lin01:{name:'林秀英',role:'奶奶；希望有稳定住处，也希望孙女照顾好自己的生活',closeness:70}};
-Object.assign(people,expansion.people);
+Object.assign(people,expansion.people,castDaily.people);
 function option(label,effect,result,extra={}){return{label,months:0,effect,result,...extra};}
-function personalMajor(s,c,step,ch,existing){if(s.storyVersion!==1||!ids.includes(c.id)||![2,6,9].includes(step))return null;
+function personalMajor(s,c,step,ch,existing){if(s.storyVersion!==1||castDaily.ids.includes(c.id)||!ids.includes(c.id)||![2,6,9].includes(step))return null;
  if(expansion.ids.includes(c.id))return expansion.major(s,c,step,ch,existing);
  const f=s.flags,u=c.living;let title,text,choices;
  if(c.id==='ethan73'){
@@ -78,7 +79,7 @@ lin01:[['奶奶留在饭盒里的纸条','奶奶说不用每次都寄钱回来�
 };
 Object.assign(daily,expansion.daily);
 function major(s,c,step,ch,existing){const result=personalMajor(s,c,step,ch,existing);const combined=step===9&&result?culture.revisit(s,result,ch):result;return dialogue.major(s,step,relationship.apply(s,step,combined||existing,ch));}
-function originalDay(s){if(culture.enabled(s)&&s.storyCursor===2)return culture.day(s);const cursor=s.storyCursor-(culture.enabled(s)&&s.storyCursor>2?1:0);const row=daily[s.characterId]?.[cursor];if(!row)return null;return{id:s.storyActive,title:row[0],text:row[1],tag:'日常 · 生活片刻',daily:true,choices:row[2].map(a=>option(...a))};}
+function originalDay(s){if(castDaily.ids.includes(s.characterId))return castDaily.day(s);if(culture.enabled(s)&&s.storyCursor===2)return culture.day(s);const cursor=s.storyCursor-(culture.enabled(s)&&s.storyCursor>2?1:0);const row=daily[s.characterId]?.[cursor];if(!row)return null;return{id:s.storyActive,title:row[0],text:row[1],tag:'日常 · 生活片刻',daily:true,choices:row[2].map(a=>option(...a))};}
 function day(s){return dialogue.day(s,originalDay(s));}
 const api={ids,people,major,day,cultureIds:culture.ids};root.LifeStoryEvents=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
