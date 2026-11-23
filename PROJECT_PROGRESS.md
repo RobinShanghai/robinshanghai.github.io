@@ -3,8 +3,8 @@
 - 新开两人flags.continuedDialogue='1'启用；dialogueDirection保存沟通路线。重大索引8部分路线解锁第5项：Noah限时合唱（关系>=60）、Ana互助与恢复试训（关系>=60且健康>=45）；无必然登台/获奖。完成后dialogueOpportunity在索引9回访。
 - 修正June身份为姐姐而非朋友。旧role仍被明确接受，不改旧档数据；新开两人的storyPeople亲密度跟随relations[1]，日常和重大节点共享同一关系进度，其余人及旧档保持原行为。
 - 修改continued-dialogue.js（新增）、cast-daily.js、cast-depth.js、story-engine.js、index.html、README.md；新增life-continued-dialogue.test.cjs，原daily/depth回归显式去掉新版本开关。概率、RNG、存储key、年龄和12重大节点不变。
-- 测试：18条回应组合完成青年篇、条件解锁/拒绝不改状态、晚期回访、同名关系同步、存档复现、独立分支及导入、旧June角色兼容、浏览器脚本顺序。首次发现拒绝选项也同步关系字段，已改为仅成功选择后同步；新增3项复验通过。全套相关回归结果见提交记录。未做手机/桌面视觉验收。
-- 提交/部署待记录。
+- 测试：18条回应组合完成青年篇、条件解锁/拒绝不改状态、晚期回访、同名关系同步、存档复现、独立分支及导入、旧June角色兼容、浏览器脚本顺序。首次发现拒绝选项也同步关系字段，已改为仅成功选择后同步；新增3项复验通过。最终13项相关测试全部通过（continued3、daily3、depth2、expansion5）。未做手机/桌面视觉验收。
+- 代码提交3df645e428be8e88cfbcb6157bf4e0e030003ed1已推送main。Pages run45289369550 success；公开continued-dialogue/cast-daily/cast-depth/story-engine/index五文件SHA-256匹配，部署已核验。
 - 下次先读continued-dialogue.js和tests/life-continued-dialogue.test.cjs。将Camille或Maya的后期交流做成同样有条件的连续回应；其余6位新增日常中的同名关系仍需独立兼容处理。勿重复32件日常/14张图片。仍未实现童年章节与中老年。
 
 ## V2.4 全人物日常覆盖（2026-11-24）
