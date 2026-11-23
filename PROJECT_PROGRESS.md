@@ -4,7 +4,7 @@
 - 新开以上8人使用现有storyVersion1/revision2时序[1,1,6,6]。无storyVersion旧档仍走原流程；不改RNG、概率、存储key、12重大节点或年龄。现14人都有专属日常，总计59件（原27+32），仍18岁开始，非完整人生或自由AI对话。
 - 修改life/cast-daily.js、story-events.js、app.js、index.html、README.md、tests/life-cast-daily.test.cjs和本文件。原personalMajor明确排除新增日常8人，避免空场景覆盖既有重大剧情。
 - 测试10项通过：新增daily3、原cast-depth2、expansion5。涵盖8人×3路线完整章节、96选项/32独立标题、前情回访、日常不推进年龄/不消耗随机、保存复现/不同选择分支/导出/原分支不覆盖、8人旧档逐步对比、原重大节点和浏览器脚本加载顺序。未完成手机/桌面实际浏览器视觉验收；本轮未改图片和布局。
-- 提交与部署：本模块待提交，完成后追加实际SHA及Pages结果。
+- 提交与部署：代码7304c4b3e580c0601dd6a93e05616f4a02315198已推送main；Pages run45287530433 success。公开cast-daily/story-events/app/index四文件SHA-256与本地一致，已上线。随后修正新增测试的随机字段断言为实际rngState并复验3项通过，生产代码无变化。
 - 下一次首先读本节、cast-daily.js、tests/life-cast-daily.test.cjs。日常覆盖已齐，不重复写32件；优先将Noah/Ana的连续回应从“记得前情”深化为按前情解锁不同回应及重大节点机会，明确区分storyPeople与原relations同名关系后再增补。童年章节仍需独立版本兼容方案，不直接插入旧档。
 
 ## V2.4 全人物差异覆盖补齐（2026-11-23）
