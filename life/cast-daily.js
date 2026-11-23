@@ -1,7 +1,8 @@
 /* Authored fictional everyday encounters. No extra RNG or historical claims. */
 (function(root){
+const continued=typeof module!=='undefined'?require('./continued-dialogue.js'):root.LifeContinuedDialogue;
 const data={
-noah73:{person:['June','朋友；希望自己的歌词被认真听见'],media:'theatre',rows:[
+noah73:{person:['June','姐姐；继续护士培训，也希望自己的歌词被认真听见'],media:'theatre',rows:[
 ['唱片放到第二面','June 带来一张借来的唱片。她想听你喜欢哪一句，不是让你给她的作品打分。',[
 ['说说那句让自己想家的歌词',{family:3,stress:-2},'June 也说起离家时没说出口的话。'],['一起拆解和声，问她想尝试什么',{skills:3,network:2},'她希望下次先唱自己的旋律，你答应先听。'],['说明今天耳朵很累，约好改天',{health:4,freedom:2},'她收起唱片；约定可以改期，不需要编造借口。']]],
 ['排练室外的热饮','Martin 提前结束排练。June 问你要不要留下来聊一会，今天没有演出商。',[
@@ -76,6 +77,6 @@ ana94:{person:['Beatriz','训练伙伴；需要兼顾弟妹与自己的生活'],
 };
 const ids=Object.keys(data),people=Object.fromEntries(ids.map(id=>[id,{name:data[id].person[0],role:data[id].person[1],closeness:40}]));
 function day(s){const d=data[s.characterId],n=s.storyCursor,r=d?.rows[n];if(!r)return null;const remembered=n>=2?s.flags['everyday'+(n-2)]:undefined;const prior=n>=2?d.rows[n-2][2][Number(remembered)]:null;
-return{id:s.storyActive,title:r[0],text:r[1]+(prior?'\n上次你选择「'+prior[0]+'」。'+prior[2]:''),tag:'日常 · 生活片刻',daily:true,choices:r[2].map((c,i)=>({label:c[0],months:0,effect:c[1],result:c[2],flag:{['everyday'+n]:String(i)},...(i===0?{person:0}:{}),media:d.media}))};}
+return continued.day(s,{id:s.storyActive,title:r[0],text:r[1]+(prior?'\n上次你选择「'+prior[0]+'」。'+prior[2]:''),tag:'日常 · 生活片刻',daily:true,choices:r[2].map((c,i)=>({label:c[0],months:0,effect:c[1],result:c[2],flag:{['everyday'+n]:String(i)},...(i===0?(continued.enabled(s)?{bond:1}:{person:0}):{}),media:d.media}))});}
 const api={ids,people,day};root.LifeCastDaily=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
