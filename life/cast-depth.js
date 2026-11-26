@@ -1,6 +1,7 @@
 /* Additional fictional personal arcs. Old saves remain unchanged. */
 (function(root){
 const continued=typeof module!=='undefined'?require('./continued-dialogue.js'):root.LifeContinuedDialogue;
+const followups=typeof module!=='undefined'?require('./personal-followups.js'):root.LifePersonalFollowups;
 const rows={
 noah73:['June 把歌词页翻了过来','June 说副歌有一句来自她的草稿。Martin 想先听完整排练，你却还没有谈清署名。',['把两人的创作部分写清，一起改副歌','保留自己的版本，请 June 独立发表她的歌','请 Martin 听两版，只讨论编曲不裁定归属','暂停这首歌，陪 June 听一场演出'],['你们保留了各自的草稿，并同意在合写作品上共同署名。','June 保留自己的作品，你开始重写可能重合的部分。','Martin 指出两版的节奏差别，署名仍由你们协商。','你们听了一晚别人的歌，关系没有只剩作品争论。'],'一场小演出的节目单','主办方需要确定曲目与作者。June 想知道，你还记不记得那张歌词页。',['带共同署名的版本演出','演自己的新歌，给 June 留独立曲目','缩短节目，保留排练时间','这次只去听，不承担演出'],'theatre'],
 maya94:['Paulo 的镜头停了下来','Paulo 希望试拍一段没有妆容修饰的生活片段。Lucia 提醒你，角色需要的脆弱不等于放弃自己的边界。',['谈清可拍内容和使用范围再试一遍','提出另一种表演方法，保留私密经历','请 Lucia 陪同讨论，再决定是否拍摄','谢绝试拍，和 Paulo 普通地吃顿饭'],['你们约定片段仅用于这次作品讨论，不把许可无限扩大。','你用虚构动作塑造人物，没有交出私人故事证明投入。','Lucia 帮你问清镜头用途，最终决定仍由你作出。','Paulo 接受了拒绝，晚饭没有变成另一场试镜。'],'样片的使用范围','有人希望把试拍片段用于宣传。Paulo 把新用途告诉你，等待明确答复。',['按新的范围重新授权','只提供公开作品，不使用试拍','要求先看剪辑，再讨论','不参加宣传，保留现有安排'],'camera'],
@@ -16,5 +17,5 @@ if(step===4)return{title:r[0],text:r[1],choices:r[2].map((label,i)=>ch(label,[{s
 if(step===8){const i=Number(s.flags.personalApproach);return{title:r[4],text:r[5]+'\n'+(Number.isInteger(i)&&r[3][i]?'你还记得上次：'+r[3][i]:'这次需要重新谈清各自的安排。'),choices:r[6].map((label,n)=>ch(label,[{skills:5,network:4,stress:2},{freedom:5,skills:3},{family:5,network:2},{health:6,stress:-5}][n],['你核实了当前条件，再作有限承诺。','你调整参与方式，保留其他生活安排。','你把责任说清，也尊重了对方的时间。','你接受这次放下可能少一些机会，但没有因此失去全部人生。'][n],{flag:{personalRevision:String(n)},media:r[7],...(n===0?{bond:0}:{})}))};}
 if(step===9&&s.flags.personalRevision!==undefined)return{...existing,text:existing.text+'\n'+c.friend+'想起了「'+r[4]+'」那次谈话。你选择过：'+r[6][Number(s.flags.personalRevision)]+'。彼此仍可以重新讨论，不必被过去的一次回应固定。'};
 return existing;}
-const api={ids:Object.keys(rows),apply:(s,c,step,ch,existing)=>continued.major(s,step,apply(s,c,step,ch,existing),ch)};root.LifeCastDepth=api;if(typeof module!=='undefined')module.exports=api;
+const api={ids:Object.keys(rows),apply:(s,c,step,ch,existing)=>followups.major(s,step,continued.major(s,step,apply(s,c,step,ch,existing),ch))};root.LifeCastDepth=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);

@@ -1,6 +1,7 @@
 /* Fictional personal stories, using each character's established period and cast.
    No claim that a fictional school, grant, contract or competition is historical fact. */
 (function(root){
+const followups=typeof module!=='undefined'?require('./personal-followups.js'):root.LifePersonalFollowups;
 const dialogue=typeof module!=='undefined'?require('./dialogue-events.js'):root.LifeDialogueEvents;
 const relationship=typeof module!=='undefined'?require('./relationship-events.js'):root.LifeRelationshipEvents;
 const culture=typeof module!=='undefined'?require('./culture-events.js'):root.LifeCultureEvents;
@@ -80,6 +81,6 @@ lin01:[['奶奶留在饭盒里的纸条','奶奶说不用每次都寄钱回来�
 Object.assign(daily,expansion.daily);
 function major(s,c,step,ch,existing){const result=personalMajor(s,c,step,ch,existing);const combined=step===9&&result?culture.revisit(s,result,ch):result;return dialogue.major(s,step,relationship.apply(s,step,combined||existing,ch));}
 function originalDay(s){if(castDaily.ids.includes(s.characterId))return castDaily.day(s);if(culture.enabled(s)&&s.storyCursor===2)return culture.day(s);const cursor=s.storyCursor-(culture.enabled(s)&&s.storyCursor>2?1:0);const row=daily[s.characterId]?.[cursor];if(!row)return null;return{id:s.storyActive,title:row[0],text:row[1],tag:'日常 · 生活片刻',daily:true,choices:row[2].map(a=>option(...a))};}
-function day(s){return dialogue.day(s,originalDay(s));}
+function day(s){return followups.day(s,dialogue.day(s,originalDay(s)));}
 const api={ids,people,major,day,cultureIds:culture.ids};root.LifeStoryEvents=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
