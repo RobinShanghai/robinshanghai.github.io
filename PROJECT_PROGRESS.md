@@ -1,3 +1,12 @@
+## 六人肖像重制（2026-11-26）
+- 基线main 89c4b51cf10651820f37fb6005a5039732192c66。用户不满意原头像同质化，明确喜欢新金智恩，并授权按此质感重制其他几位与上传。本轮完成Ethan、金智恩、Ana、陈晓雨、Maya、Camille共6张，另8人保留。
+- 区分脸型/发型/神态/服装/环境：演员酒红灯光、继承人白衣墨绿办公室、跑者蓝衫阳光、设计者暖橙工作室、女演员红幕、泳将短发水蓝泳池。均为18岁虚构成人的AI写实形象，不是历史照片或真人肖像。
+- 新文件portrait-<id>-v2.jpg；保留旧图可回退。640×640 JPEG，63–88KB/张，总计约464KB。修改characters/adversity图片引用及index缓存版本，不改任何剧情、状态或存储key，旧档按profile自动显示新图。
+- 新assets/PORTRAIT_REFRESH_MANIFEST.json包含6条完整提示词、旧文件名、SHA-256与尺寸；原PORTRAIT_ASSET_MANIFEST中Ana条目同步新素材，其他条目保留。
+- 已逐张查看生成图；资产路径/哈希/大小/状态不变/14个唯一路径断言通过，life-portraits原2测试通过（含旧档恢复/同选择一致）。桌面/手机真实裁切未完成：Playwright浏览器与系统Chromium实际二进制缺失，未下载或无限重试；原CSS与懒加载保持。
+- 下次首先读本节和PORTRAIT_REFRESH_MANIFEST.json。先让用户试玩当前6图并补真实手机裁切验收，再按不同气质逐步重制其余8位；不要重复生成用户认可的金智恩。剧情深化仍从personal-followups.js的真实分流继续。
+- 提交/部署：待记录实际SHA与Pages结果。
+
 ## 九人后续回应（2026-11-26）
 - 基线8f0e854fb9780904a8e6ea47e5280c09041f61ba，Robin独立短篇保留。新增personal-followups.js，Camille/陈晓雨/佐藤/Maya/Lukas/Samuel/Ruth/森明/徐恩秀各3专属回应，共27；保留原3项，文化revision3在cursor3而非文化节点追加。首次日常记录选择，后续引用原决定，重大索引9回访新回应。
 - 新开上述9人personalFollowups='1'启用，旧档无字段不变。未扩年龄/人物/图片、无额外随机。Maya新叙述明确Lucia老师、Paulo哥哥；旧剧情有关系称谓不一致仍需系统复核，不作全修复宣称。

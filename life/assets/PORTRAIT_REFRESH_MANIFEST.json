@@ -1,0 +1,67 @@
+{
+  "date": "2026-11-26",
+  "source": "OpenAI built-in image generation; fictional adult characters, not historical photos",
+  "processing": "640x640 JPEG quality 84; format/size optimisation only, no retouching; originals retained",
+  "assets": [
+    {
+      "characterId": "ethan73",
+      "prompt": "Use case: photorealistic-natural. A single square photographic character portrait for a literary life simulation, fictional Ethan Miller, explicitly adult age 18, Erie Pennsylvania 1973, an unusually handsome aspiring actor from an ordinary family. Charismatic angular face with distinctive strong eyebrows, light hazel eyes, thick dark honey-brown wavy 1970s hair, clean shaven, a lively lopsided smile, youthful real skin. Candid three-quarter chest-up shot as he turns toward a friend off-camera after a theatre audition, loosely holding a folded script at the bottom edge. Cream wide-collar shirt under a wine-red corduroy jacket, inexpensive yet flattering. Warm amber theatre doorway rim light, deep petrol blue backstage shadows, distinctive cinematic colour and dimensional contrast, bright expressive face. A photo you would want to click to live his life. Head centred within middle 55 percent width, full hair with headroom, crop-safe shoulders, not a passport photo. Historically plausible 1973 clothing, no modern devices, no logos, no text, no illustration, no waxy retouching, no grey-brown desaturated documentary look. Brand new fictional identity, not a celebrity.",
+      "file": "portrait-ethan73-v2.jpg",
+      "previousFile": "ethan.jpg",
+      "bytes": 79889,
+      "sha256": "e3d0c6bd2a355e3f58673840ac9ef2988bf59af384d1b8ad57a487c1e44aa270",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "characterId": "jieun97",
+      "prompt": "Use case: photorealistic-natural. Single square photographic character portrait for a life simulation. Fictional Kim Ji-eun, explicitly adult 18-year-old Korean heiress in Busan December 1997, youthful and strikingly beautiful, not a middle-aged executive. Sophisticated young woman with a long oval face, sharply attentive dark eyes, natural lips, sleek straight black hair in a precise chin-length bob tucked behind one ear. Self-possessed subtle amused smile, poised shoulders. Ivory tailored late-1990s wool jacket with black collar detail, tiny pearl stud earrings, no logos or tiara. Waist-up candid shot sitting in a refined family office by a tall window, one forearm casually on chair, head and torso centred, full headroom; background rich dark emerald wall, softly blurred walnut furniture and warm brass light. Crisp cool window daylight on face contrasts with warm elegant interior. A memorable film character with wealth and independence apparent through tailoring and bearing, not a generic stock headshot or poor rural worker. Real photographic texture, beautiful vivid but tasteful colour, cinematic visual appeal, no beauty filter, no cartoon, no text, no cleavage, no celebrity likeness.",
+      "file": "portrait-jieun97-v2.jpg",
+      "previousFile": "korea.jpg",
+      "bytes": 62880,
+      "sha256": "3a9ab09334d7e3eb406013c93b3146546952bfa60b482ff49fd72655c9eed025",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "characterId": "ana94",
+      "prompt": "Use case: photorealistic-natural. Single square action-adjacent photographic character portrait, fictional Ana Souza, explicitly adult 18-year-old Brazilian distance runner, Sao Paulo outskirts 1994. Distinctively athletic young woman with deep warm brown skin, broad cheekbones, lively wide smile showing a small natural gap between front teeth, tightly curled dark hair tied in a high practical puff with a faded yellow fabric band. Capture the instant after a training lap, looking back towards a teammate with a grin, slightly turned athletic shoulders, a simple cobalt-blue 1990s cotton running tee, sweat glinting at temple, no brands. Face and upper torso central, whole hair with margin, chest-up portrait, track visible below and leafy green sunlit trees behind, no dilapidation stereotype. Low morning sun, luminous greens, rich blue and sunny gold, lively candid sports editorial photograph, not studio glamour, not static front-facing ID photo. Dignity, competitive spirit, humour and vitality rather than status or misery. Real skin, realistic proportions, sharp face and softly blurred background, no text, no cartoon, no celebrity.",
+      "file": "portrait-ana94-v2.jpg",
+      "previousFile": "portrait-ana94.jpg",
+      "bytes": 87508,
+      "sha256": "89034c4d67b848e574ff8b0a8594f450c97ea286cb66a7a66d30e241a3edf5a6",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "characterId": "chen01",
+      "prompt": "Use case: photorealistic-natural. Single square photographic portrait for a fictional life simulator. Chen Xiaoyu, explicitly adult 18-year-old Chinese daughter of a Shanghai industrialist, 2001, interested in original clothing design rather than corporate power. Captivating youthful beauty, distinct soft heart-shaped face, wide thoughtful eyes, straight black hair gathered into a loose low bun with wisps, natural rosy lips, a gentle curious half-smile. She is leaning over a large design desk, turning her head toward the camera, holding a pencil, fabric swatches visible at lower edge. Burnt-orange fine-knit turtleneck and simple cream trousers, refined understated taste, tiny silver earrings. Bright airy Shanghai design studio, tall old windows, pale sage walls, muted patterned textiles softly visible. Film-quality editorial photograph, beautiful luminous daylight, tactile yarn, skin and paper, fresh warm cream/sage/rust palette, life and intelligence. Face centred at 45 percent height, whole head with generous headroom, shoulders and desk visible, crop-safe square for 4:5 card. Different from a black-bob heiress in a white suit and dark office: softer, creative, warm, relaxed. No celebrity, no caricature, no text, no logos, no cartoon, no poverty documentary, no plastic doll skin, no modern laptop or phone.",
+      "file": "portrait-chen01-v2.jpg",
+      "previousFile": "china.jpg",
+      "bytes": 84305,
+      "sha256": "30d0ab7217ef0d698727db2064c5f1827d472fadc964cb7c6fa7e1c8ef977cfa",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "characterId": "maya94",
+      "prompt": "Use case: photorealistic-natural. Single square premium cinematic character portrait of Maya Costa, fictional explicitly adult 18-year-old Brazilian aspiring theatre actress in Sao Paulo, 1994. An arrestingly beautiful individual, golden olive skin, long thick dark curls cascading over one shoulder, deep brown expressive almond eyes, high cheekbones, full lips, striking warm face without celebrity likeness. Three-quarter waist-up, one hand resting lightly on the edge of a burgundy theatre curtain while turning toward a person in the wings. A small confident playful smile rather than stock headshot grin. Dark teal 1990s scoop-neck cotton top with normal modest neckline, understated small gold hoop earrings; ordinary income but charismatic style. Deep wine-red velvet stage curtain, warm theatre side-light, rich contrasting teal and burgundy, subtle blurred stage bulbs. Movie-poster-level magnetism achieved through face and presence, not revealing clothing. Young and energetic, human skin, no airbrushing, very sharp expressive eyes. Centre face at 42 percent height, full hair and headroom, torso central within safe middle 65 percent, background storytelling. No text, no watermarks, no tiara, no luxury office, no caricature, no cartoon.",
+      "file": "portrait-maya94-v2.jpg",
+      "previousFile": "brazil.jpg",
+      "bytes": 68251,
+      "sha256": "59650457aaf1193ad572458b27b2399fc44f87f5eb65c63c51dc40bdb9d85fd5",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "characterId": "camille08",
+      "prompt": "Use case: photorealistic-natural. Single square cinematic editorial photograph for a life simulator. Camille Laurent, fictional explicitly adult 18-year-old French competitive swimmer in Lyon in 2008. Distinct youthful face with pale freckled skin, grey-blue eyes, strong straight nose, short wet sandy-blonde pixie hair pushed back, athletic shoulders, spirited confident grin as she glances at a teammate just off-camera. Coming out of a training session, dark navy athletic zip jacket over swimwear, jacket zipped to upper chest, orange towel draped over ONE shoulder, goggles loosely held near lower frame, no sexualised presentation. Chest-up candid three-quarter portrait at an indoor pool, luminous aqua water and high white clerestory windows behind. Crisp cool daylight, bright turquoise/orange/navy colour interplay, small beads of water, real skin and damp hair, film-like composition and magnetic athletic vitality. Whole head with generous headroom, centred face, square crop-safe shoulders, memorable character not generic fashion model or stationary passport photo. No logos, no text, no watermarks, no cartoon, no beauty-filter smoothing, no wealthy-office setting, no celebrity likeness.",
+      "file": "portrait-camille08-v2.jpg",
+      "previousFile": "france.jpg",
+      "bytes": 80851,
+      "sha256": "dec78bf966da2052f25ac54ffe4b0daa5c1bae1cfb166bc447dd7a48889f38a4",
+      "width": 640,
+      "height": 640
+    }
+  ]
+}

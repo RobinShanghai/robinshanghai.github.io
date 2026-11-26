@@ -50,10 +50,11 @@
     },
     {
       "characterId": "ana94",
-      "file": "portrait-ana94.jpg",
-      "prompt": "Square photorealistic documentary character portrait for fictional life simulator. Ana Souza, 18 year old Brazilian woman Sao Paulo 1994, dark brown skin, tied curly hair, forest green athletic tee, community running track. Centered chest-up, whole head with generous headroom. Natural skin, soft daylight, subtle period color film. Individual, capable, dignified, gentle expression. Modest everyday clothing. No poverty caricature, no cartoon, no text, no logos, no modern devices. Distinct fictional face.",
-      "bytes": 56359,
-      "sha256": "d9b7d0b7117300ea34832c70ccba10d7447194d533956f062bdec834d103a4f7",
+      "prompt": "Use case: photorealistic-natural. Single square action-adjacent photographic character portrait, fictional Ana Souza, explicitly adult 18-year-old Brazilian distance runner, Sao Paulo outskirts 1994. Distinctively athletic young woman with deep warm brown skin, broad cheekbones, lively wide smile showing a small natural gap between front teeth, tightly curled dark hair tied in a high practical puff with a faded yellow fabric band. Capture the instant after a training lap, looking back towards a teammate with a grin, slightly turned athletic shoulders, a simple cobalt-blue 1990s cotton running tee, sweat glinting at temple, no brands. Face and upper torso central, whole hair with margin, chest-up portrait, track visible below and leafy green sunlit trees behind, no dilapidation stereotype. Low morning sun, luminous greens, rich blue and sunny gold, lively candid sports editorial photograph, not studio glamour, not static front-facing ID photo. Dignity, competitive spirit, humour and vitality rather than status or misery. Real skin, realistic proportions, sharp face and softly blurred background, no text, no cartoon, no celebrity.",
+      "file": "portrait-ana94-v2.jpg",
+      "previousFile": "portrait-ana94.jpg",
+      "bytes": 87508,
+      "sha256": "89034c4d67b848e574ff8b0a8594f450c97ea286cb66a7a66d30e241a3edf5a6",
       "width": 640,
       "height": 640
     }
