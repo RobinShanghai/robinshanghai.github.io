@@ -5,7 +5,7 @@
 - PORTRAIT_REFRESH_MANIFEST.json现含14人完整提示词、旧文件名、尺寸、字节及SHA-256；PORTRAIT_ASSET_MANIFEST六人条目同步新素材。
 - 测试：原life-portraits2项通过（含存档恢复/同选择一致）；14图哈希、文件大小、独立路径/内容验证通过；与修改前数据比对，仅8个image字段变化，全部其他角色数据及前6图片保持不变。已逐张查看生成结果。此前浏览器二进制不可用，本轮未重复尝试，仍待真实手机裁切验收。
 - 下一次先读本节与PORTRAIT_REFRESH_MANIFEST.json；全部主游戏人物已完成新版头像，不重复生成。优先补手机实际裁切/体验验收，再继续personal-followups的真实剧情分流。Robin独立短篇不含真人肖像，本轮未修改。
-- 提交/部署待记录。
+- 代码提交a475bc110f3029b10f072e9a06d9c0d4a9f9b83c已推送main；Pages run45820192317 success。公开8张JPEG与characters/adversity/index共11文件SHA-256匹配，已上线。
 
 ## 六人肖像重制（2026-11-26）
 - 基线main 89c4b51cf10651820f37fb6005a5039732192c66。用户不满意原头像同质化，明确喜欢新金智恩，并授权按此质感重制其他几位与上传。本轮完成Ethan、金智恩、Ana、陈晓雨、Maya、Camille共6张，另8人保留。
