@@ -1,0 +1,29 @@
+/* Robin's fictional decision rehearsal; deliberately separate from biography and legacy saves. */
+(function(root){
+const nodes=[
+['把时间留给什么','以上海与澳洲之间的生活、音乐和表演兴趣为灵感。这是一段虚构的下一阶段推演，不复述你的真实人生。时间只能先集中在一个方向。',[
+['吉他与录音','先完成一首能反复听的翻唱作品',{craft:3,energy:-1},'music'],['舞台与表达','参加排练，学习与别人共同完成作品',{connection:3,energy:-1},'stage'],['制作实用工具','把一个反复遇到的小问题做成网页工具',{craft:2,space:1},'tools'],['先留出生活空间','保持运动与散步，观察自己真正想投入什么',{energy:3,space:2},'explore']]],
+['当兴趣遇到现实日程','朋友提出一起做点事，但大家可用的时间不同。你可以合作，也可以保留自己的节奏。',[
+['约定四周的小目标','每周只安排一次固定见面',{craft:2,connection:2,energy:-1},'bounded'],['独立完成最小版本','缩小范围，减少协调',{craft:3,space:1,connection:-1},'solo'],['先聊各自的期待','明确分工，也允许对方拒绝',{connection:3,space:1},'talk'],['暂缓项目，保留普通来往','一次晚饭不需要变成合作',{energy:2,connection:1},'rest']]],
+['上海与澳洲之间的安排','这一轮模拟中，你有机会调整下一阶段的生活重心。往返与协调会占用时间；任何选择都不保证更高收入或更幸福。',[
+['先在上海集中学习','让课程与熟悉的生活圈稳定下来',{craft:2,connection:1,space:-1},'shanghai'],['先在澳洲建立日常','重排练习与生活节奏',{energy:2,space:1,connection:-1},'australia'],['分阶段两地生活','每次停留前确定一件能完成的小事',{space:2,energy:-2},'both'],['暂不迁动，先完成手头项目','减少切换，过一段可预测的日子',{craft:1,energy:2},'stay']]],
+['做完之后，是否让别人看见','作品或生活尝试已经有了雏形。公开可以带来反馈，也需要准备与维护。私人完成同样有价值。',[
+['分享给少数愿意认真回应的人','邀请具体意见，保留修改空间',{craft:2,connection:2},'small'],['发布到个人网站','写清作品范围，安排有限维护时间',{craft:1,connection:3,energy:-1},'public'],['先自己留存，再练一个版本','把完成感留给自己',{craft:3,space:1},'private'],['暂停产出，回到普通生活','约朋友散步，之后再决定',{energy:3,connection:1},'pause']]]
+];
+const copy=x=>JSON.parse(JSON.stringify(x));
+function create(){return{version:1,step:0,stats:{craft:0,connection:0,energy:6,space:0},decisions:[],log:[]};}
+function valid(s){return s?.version===1&&Number.isInteger(s.step)&&s.step>=0&&s.step<=nodes.length&&Array.isArray(s.decisions)&&s.decisions.length===s.step&&s.decisions.every((n,i)=>Number.isInteger(n)&&n>=0&&n<nodes[i][2].length)&&JSON.stringify(s)===JSON.stringify(replay(s.decisions));}
+function replay(ds){const s=create();for(const i of ds)choose(s,i);return s;}
+function scene(s){if(s.step===nodes.length)return null;const n=nodes[s.step];let extra='';if(s.step){const route=nodes[0][2][s.decisions[0]][3];extra={music:'你仍记得第一步想完成的录音；可以缩短歌曲片段，不必一次做到录音棚水准。',stage:'你最初选择了舞台；共同排练需要回应别人的时间，而不仅是独自练习。',tools:'你最初选择了工具制作；功能做得小一些，才有时间听真实使用反馈。',explore:'你最初选择了探索生活；今天仍可以保持开放，不必为了证明进度马上选职业。'}[route];}return{title:n[0],text:n[1]+' '+extra,choices:n[2].map(c=>({label:c[0],description:c[1]}))};}
+function choose(s,i){const n=nodes[s.step],c=n?.[2][i];if(!c)return;for(const[k,v]of Object.entries(c[2]))s.stats[k]+=v;s.decisions.push(i);s.log.push(n[0]+'：'+c[0]+'。'+c[1]);s.step++;}
+const api={create,choose,scene,valid,replay};if(typeof module!=='undefined')module.exports=api;root.RobinSimulation=api;
+if(typeof document==='undefined')return;
+const key='life_robin_rehearsal_v1',app=document.getElementById('robinApp');let s=create(),slots=[],message='';
+try{const raw=JSON.parse(localStorage.getItem(key)||'null');if(raw){if(valid(raw.current))s=raw.current;if(Array.isArray(raw.slots))slots=raw.slots.filter(x=>typeof x.name==='string'&&valid(x.state));}}catch{message='未能读取本地记录；可以开始新模拟，或重新导入备份。';}
+const esc=x=>String(x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function persist(){try{localStorage.setItem(key,JSON.stringify({current:s,slots}));return true;}catch{message='保存失败，请先导出备份，再离开页面。';return false;}}
+function render(){const sc=scene(s);app.innerHTML='<p role="status">'+esc(message)+'</p><p>第 '+Math.min(s.step+1,4)+' / 4 个选择 · 数值仅为游戏设计，不评定真实的 Robin</p>'+(sc?'<h1>'+esc(sc.title)+'</h1><p>'+esc(sc.text)+'</p>'+sc.choices.map((c,i)=>'<button class="wide" data-choice="'+i+'"><strong>'+esc(c.label)+'</strong><br>'+esc(c.description)+'</button>').join(''):'<h1>这一次，你留下了怎样的生活</h1><p>没有成功总分。你可以读取任意检查点，比较同一起点的不同安排。</p>')+'<p>练习积累 '+s.stats.craft+' · 相处投入 '+s.stats.connection+' · 精力余量 '+s.stats.energy+' · 自主空间 '+s.stats.space+'</p><h2>本条路线</h2><ol>'+s.log.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ol><button class="wide" data-save>保存当前分支</button><button class="wide" data-new>相同起点重新选择</button><button class="wide" data-export>导出全部模拟</button><label>导入备份<input type="file" id="importRobin" accept="application/json"></label><h2>检查点与已保存路线</h2>'+slots.map((x,i)=>'<p>'+esc(x.name)+' <button data-load="'+i+'">读取为新路线</button></p>').join('');}
+app.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.choice!==undefined){slots.push({name:'决定前 · '+nodes[s.step][0]+' · '+new Date().toLocaleString(),state:copy(s)});choose(s,Number(b.dataset.choice));message='选择已记录。';persist();}else if(b.hasAttribute('data-save')){slots.push({name:'路线 · '+s.log.at(-1)+' · '+new Date().toLocaleString(),state:copy(s)});message='';if(persist())message='当前路线已保存。';}else if(b.dataset.load!==undefined){slots.push({name:'读取前保留路线 · '+new Date().toLocaleString(),state:copy(s)});s=copy(slots[Number(b.dataset.load)].state);message='原路线已保留，可以作出不同选择。';persist();}else if(b.hasAttribute('data-new')){slots.push({name:'重新开始前的路线',state:copy(s)});s=create();persist();}else if(b.hasAttribute('data-export')){const u=URL.createObjectURL(new Blob([JSON.stringify({current:s,slots})],{type:'application/json'})),a=document.createElement('a');a.href=u;a.download='robin-simulation.json';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);}render();});
+app.addEventListener('change',async e=>{if(e.target.id!=='importRobin')return;try{const f=e.target.files[0];if(!f)return;if(f.size>2000000)throw Error();const raw=JSON.parse(await f.text());if(!valid(raw.current)||!Array.isArray(raw.slots)||!raw.slots.every(x=>typeof x.name==='string'&&valid(x.state)))throw Error();slots.push({name:'导入前路线',state:copy(s)},...raw.slots);s=raw.current;message='导入完成，原路线保留。';persist();}catch{message='备份无效，未替换当前路线。';}render();});
+document.getElementById('exitRobin').onclick=()=>{if(persist())location.href='./';else render();};render();
+})(globalThis);
