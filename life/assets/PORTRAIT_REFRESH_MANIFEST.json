@@ -1,7 +1,7 @@
 {
   "date": "2026-11-26",
   "source": "OpenAI built-in image generation; fictional adult characters, not historical photos",
-  "processing": "640x640 JPEG quality 84; format/size optimisation only, no retouching; originals retained",
+  "processing": "JPEG quality 84; max edge 640, original aspect ratio preserved. First six 640x640, remaining eight 512x640. No retouching; original images retained.",
   "assets": [
     {
       "characterId": "ethan73",
@@ -61,6 +61,86 @@
       "bytes": 80851,
       "sha256": "dec78bf966da2052f25ac54ffe4b0daa5c1bae1cfb166bc447dd7a48889f38a4",
       "width": 640,
+      "height": 640
+    },
+    {
+      "characterId": "noah73",
+      "prompt": "Use case: photorealistic-natural. One square premium cinematic photograph for a literary life simulator, a memorable and attractive fictional adult character explicitly age 18, youthful not middle-aged. Rich tasteful colour, luminous dimensional light, human skin and natural facial asymmetry, magnetic eyes. Face centrally placed within the middle 55% width, face centre around 40% height, whole head with 10% headroom, upper torso visible, safe for 4:5 and narrow vertical avatar crops. Expressive candid character moment, not a stock passport photograph. No text, logos, watermark, collage, celebrity likeness, illustration or cartoon. No plastic beauty-filter skin, no uniformly grey-brown palette. Noah Brooks, male singer in Birmingham England, 1973. A lean graceful face, long straight dark chestnut hair brushing shoulders, clear blue eyes, a fine slightly aquiline nose, charismatic thoughtful half-smile. Unlike a curly-haired cheerful American actor: his attraction is poetic and absorbed in music. Wearing a sapphire-blue open-neck 1970s shirt under a worn charcoal waistcoat, inexpensive but expressive. Seated in a small rehearsal room with a wooden acoustic guitar across his lap, looking up from a chord at a friend. Forearm and a small part of guitar at lower edge, priority on distinctive face. Cool blue window glow contrasts with warm orange rehearsal lamp and dark plum walls, intimate recording-session atmosphere. Period microphone blurred to side, not across face. British 1973 clothing and equipment, no modern devices.",
+      "file": "portrait-noah73-v2.jpg",
+      "previousFile": "music.jpg",
+      "bytes": 64043,
+      "sha256": "45d412305bf9ee2e197c84fe503d9cb4d17d0c1510299f5d71f03d5b34c4bf61",
+      "width": 512,
+      "height": 640
+    },
+    {
+      "characterId": "yusuke91",
+      "prompt": "Use case: photorealistic-natural. One square premium cinematic photograph for a literary life simulator, a memorable and attractive fictional adult character explicitly age 18, youthful not middle-aged. Rich tasteful colour, luminous dimensional light, human skin and natural facial asymmetry, magnetic eyes. Face centrally placed within the middle 55% width, face centre around 40% height, whole head with 10% headroom, upper torso visible, safe for 4:5 and narrow vertical avatar crops. Expressive candid character moment, not a stock passport photograph. No text, logos, watermark, collage, celebrity likeness, illustration or cartoon. No plastic beauty-filter skin, no uniformly grey-brown palette. Yusuke Sato, a male Japanese scientific prodigy in Osaka, 1991. Refined narrow oval face, delicate angular cheekbones, clean-shaven, straight black side-parted hair falling lightly across forehead, round thin metal spectacles, an intent intelligent gaze with a tiny amused smile. A charming quiet young scientist, not a generic pop idol. Pale blue rolled-sleeve cotton shirt over a plain white tee. Sitting sideways at the corner of his family's electronics repair shop with a small circuit board and paper sketch in his hands, pausing to think. Face uncluttered. Amber desk lamp and fresh cyan window light, blurred analog oscilloscope and neatly labelled component drawers in background (no legible text). Warm polished wood, sky-blue and copper palette. Outfit and analog devices plausible for 1991, no laptop or smartphone, no lab coat stereotype.",
+      "file": "portrait-yusuke91-v2.jpg",
+      "previousFile": "japan.jpg",
+      "bytes": 70085,
+      "sha256": "34dcce72e7f0fcbfbc339a239052e1f8eb77b1c8c2ac7330a09e84ac6d1608a7",
+      "width": 512,
+      "height": 640
+    },
+    {
+      "characterId": "lukas89",
+      "prompt": "Use case: photorealistic-natural. One square premium cinematic photograph for a literary life simulator, a memorable and attractive fictional adult character explicitly age 18, youthful not middle-aged. Rich tasteful colour, luminous dimensional light, human skin and natural facial asymmetry, magnetic eyes. Face centrally placed within the middle 55% width, face centre around 40% height, whole head with 10% headroom, upper torso visible, safe for 4:5 and narrow vertical avatar crops. Expressive candid character moment, not a stock passport photograph. No text, logos, watermark, collage, celebrity likeness, illustration or cartoon. No plastic beauty-filter skin, no uniformly grey-brown palette. Lukas Weber, young male heir to a publishing house, Hamburg Germany, 1989. Exceptionally handsome, distinctive long face, strong straight nose, pale grey-green eyes, sleek straight dark-blond hair swept loosely back in 1980s style, clean shaven, open but self-assured expression with a slight smile. Tall elegant bearing. Charcoal double-breasted wool jacket with broad 1980s lapels, deep navy fine-knit shirt, no tie, tasteful understated family wealth. Standing by a wall of books in a publishing office, an unmarked open book in one hand, turning from reading to greet someone. Cool north-window daylight on face, wine-red chair and honey oak bookshelves behind, restrained navy/wine/gold colour. Editorial magazine character portrait with youthful warmth and intelligence, not a stiff executive headshot, not an aristocratic costume.",
+      "file": "portrait-lukas89-v2.jpg",
+      "previousFile": "germany.jpg",
+      "bytes": 52319,
+      "sha256": "6286f189746539c958f62020f3e14f67daa32483ed269ff9b3a162ebad87c5cc",
+      "width": 512,
+      "height": 640
+    },
+    {
+      "characterId": "lin01",
+      "prompt": "Use case: photorealistic-natural. One square premium cinematic photograph for a literary life simulator, a memorable and attractive fictional adult character explicitly age 18, youthful not middle-aged. Rich tasteful colour, luminous dimensional light, human skin and natural facial asymmetry, magnetic eyes. Face centrally placed within the middle 55% width, face centre around 40% height, whole head with 10% headroom, upper torso visible, safe for 4:5 and narrow vertical avatar crops. Expressive candid character moment, not a stock passport photograph. No text, logos, watermark, collage, celebrity likeness, illustration or cartoon. No plastic beauty-filter skin, no uniformly grey-brown palette. Lin He, young Chinese woman, self-directed student in Anhui county outskirts in 2001. A distinctive softly square face, bright thoughtful dark eyes, expressive brows, a slightly upturned nose, short straight black bob with uneven light bangs tucked behind ears; natural lively beauty, an impish small smile as she has just understood a difficult problem. Slim plain coral-red cotton cardigan over a cream tee, clean affordable clothing. At a borrowed desk beside a large sunlit window, pencil resting in her fingers and a well-used maths notebook at lower edge. Rural tiled rooftops and vivid green vines softly visible outdoors, simple cared-for interior. Luminous morning cream/coral/leaf-green palette, candid three-quarter angle, dignified resourcefulness, no misery or poverty aesthetic. No long hair like the Chinese heiress, no formal luxury clothes, no uniform blue shirt, no modern smartphone.",
+      "file": "portrait-lin01-v2.jpg",
+      "previousFile": "portrait-lin01.jpg",
+      "bytes": 74510,
+      "sha256": "c60762ae4bfa3852c2c8880ab1e924541319c0c8eca13581941994adb695719c",
+      "width": 512,
+      "height": 640
+    },
+    {
+      "characterId": "sam73",
+      "prompt": "Use case: photorealistic-natural. One premium cinematic photographic portrait for a literary life simulator. A distinctive attractive fictional young adult explicitly age 18, youthful real human face. Portrait 4:5, whole head with generous headroom, face centre at about 40 percent height and near horizontal centre, upper torso visible, safe for narrow mobile portrait crop. Rich appealing colour, dimensional natural light, believable 1970s/1990s/2000s period as specified. Characterful candid expression, not passport photo. No celebrity likeness, no logos, text, watermark, collage, cartoon, misery aesthetic, plastic retouching or identical generic AI-model face. Samuel Reed, a working-class young man in Erie Pennsylvania, 1973. Warm medium olive skin, broad angular face, close-cropped dark hair, strong brows, brown eyes, clean-shaven, sturdy shoulders, a deep dimple on one cheek and a crooked warm smile. Quiet practical charm, different from the glamorous long-haired singer and curly-haired actor. Worn but clean indigo denim work jacket over a warm ochre henley, sleeves casually rolled. Pausing at a garage workbench after fixing his sister's bicycle, holding a simple spanner down near lower frame. Blurred red bicycle frame and orderly tools behind him, cool skylight and soft late-afternoon amber side light, strong indigo/ochre/red accents. Full head, face and hands plausible, ordinary capable young person with humour, not a dirty downtrodden labour caricature or a bodybuilder.",
+      "file": "portrait-sam73-v2.jpg",
+      "previousFile": "portrait-sam73.jpg",
+      "bytes": 69493,
+      "sha256": "a3c6e0a9de9849ecc89eb8d64b7a34fa4b5a00e003097e96b5c73830c2b6c313",
+      "width": 512,
+      "height": 640
+    },
+    {
+      "characterId": "ruth73",
+      "prompt": "Use case: photorealistic-natural. One premium cinematic photographic portrait for a literary life simulator. A distinctive attractive fictional young adult explicitly age 18, youthful real human face. Portrait 4:5, whole head with generous headroom, face centre at about 40 percent height and near horizontal centre, upper torso visible, safe for narrow mobile portrait crop. Rich appealing colour, dimensional natural light, believable 1970s/1990s/2000s period as specified. Characterful candid expression, not passport photo. No celebrity likeness, no logos, text, watermark, collage, cartoon, misery aesthetic, plastic retouching or identical generic AI-model face. Ruth Evans, young English woman in Birmingham 1973, a laundry worker and family caregiver who loves novels and has dry humour. Distinct round freckled face, lively green eyes, small nose, copper-red wavy hair in a loose shoulder-length 1970s style with light fringe, a mischievous closed-mouth smile like she has just made a quiet joke. Moss-green cable-knit cardigan over a pale mustard floral shirt, inexpensive neatly kept clothes. During a break sitting on a pale blue bench by a bright laundrette window, a borrowed paperback open in her hands near bottom frame, blurred cream-coloured period washing machines in background. Fresh soft sunlight, mint/green/copper colour, intimate and luminous film photograph. Neither weary mother nor glossy heiress, clearly youthful with her own life and a spark of confidence. No nurse uniform, no head scarf, no modern appliances.",
+      "file": "portrait-ruth73-v2.jpg",
+      "previousFile": "portrait-ruth73.jpg",
+      "bytes": 73891,
+      "sha256": "1b2b21e54b77abc3c52cd1f4e03dacd3a560336c47dc210b666e7f57eb05ceea",
+      "width": 512,
+      "height": 640
+    },
+    {
+      "characterId": "aki91",
+      "prompt": "Use case: photorealistic-natural. One premium cinematic photographic portrait for a literary life simulator. A distinctive attractive fictional young adult explicitly age 18, youthful real human face. Portrait 4:5, whole head with generous headroom, face centre at about 40 percent height and near horizontal centre, upper torso visible, safe for narrow mobile portrait crop. Rich appealing colour, dimensional natural light, believable 1970s/1990s/2000s period as specified. Characterful candid expression, not passport photo. No celebrity likeness, no logos, text, watermark, collage, cartoon, misery aesthetic, plastic retouching or identical generic AI-model face. Mori Aki, young Japanese male electronics apprentice with hearing loss, Osaka suburbs 1991. Appearance is not defined by disability. Distinct wide cheekbones, straight broad eyebrows, clear dark eyes, short tidy black hair with a simple side part and clipped sides, no spectacles, clean-shaven, small relaxed smile, youthful and sturdy rather than the slender bespectacled scientific prodigy. Brick-red lightweight work overshirt over oatmeal tee. Seated at a shared community work table with a hand-drawn diagram on paper and a small unbranded analog radio at bottom edge, looking attentively toward a collaborator off-camera, pencil loosely in hand. Pale turquoise wall, soft cream window light, simple component trays. Camera close enough for expressive face but includes gestures and project. Calm agency, practical design sense, warm terracotta/turquoise contrast. No visible hearing-device invention, no medical framing, no pity, no modern screens.",
+      "file": "portrait-aki91-v2.jpg",
+      "previousFile": "portrait-aki91.jpg",
+      "bytes": 58784,
+      "sha256": "fcef243d587e7cb5aa1d2ad65ab12117551b4b7fb5ee4fc4103797001215909d",
+      "width": 512,
+      "height": 640
+    },
+    {
+      "characterId": "seo97",
+      "prompt": "Use case: photorealistic-natural. One premium cinematic photographic portrait for a literary life simulator. A distinctive attractive fictional young adult explicitly age 18, youthful real human face. Portrait 4:5, whole head with generous headroom, face centre at about 40 percent height and near horizontal centre, upper torso visible, safe for narrow mobile portrait crop. Rich appealing colour, dimensional natural light, believable 1970s/1990s/2000s period as specified. Characterful candid expression, not passport photo. No celebrity likeness, no logos, text, watermark, collage, cartoon, misery aesthetic, plastic retouching or identical generic AI-model face. Seo Eun-su, young Korean woman helping with a family delivery shop's accounts, Busan December 1997. Distinct slender elongated face with a defined jaw, wide alert dark eyes, long straight black hair tied in a high practical ponytail, off-centre wispy bangs, natural pink lips, a bright knowing smile with slightly raised eyebrow. Very different from a bob-haired glamorous heiress. A plum-purple ribbed sweater with a modest round neckline and a small cream checked scarf knotted loosely at the neck, neat affordable late-1990s style. Pausing over a paper ledger beside a shop window, holding an unbranded mechanical pencil near bottom of frame, warm hand-painted blue shelving and soft out-of-focus delivery boxes behind. Golden afternoon window light, violet/cream/cobalt palette, energetic cinematic portrait. Family financial difficulties do not determine attractiveness or happiness. Not rich office luxury, not destitution, not blank expression, no modern laptop or smartphone.",
+      "file": "portrait-seo97-v2.jpg",
+      "previousFile": "portrait-seo97.jpg",
+      "bytes": 62232,
+      "sha256": "da584d7a6bd7b79820a65a235c4fc2dfd8f7c66f565b9152643bce6cb044381e",
+      "width": 512,
       "height": 640
     }
   ]
