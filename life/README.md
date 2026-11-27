@@ -7,7 +7,7 @@
 - 未解锁的Robin不会进入卡片或任何随机范围；解锁保存在本浏览器。导入或继续已有Robin主存档不受解锁状态阻挡。旧角色、旧肖像、原短篇与主游戏存档都保留。
 - 关键代码：cast-additions.js / new-lives-stories.js / hidden-character.js；新图来源和提示词：assets/PORTRAIT_ADDITIONS_MANIFEST.json。
 
-相关测试：`node --test tests/life-cast16.test.cjs tests/life-adversity.test.cjs tests/life-portraits.test.cjs tests/life-navigation.test.cjs`。浏览器交互已用VM模拟DOM验证，尚待手机实机裁切检查。仍未实现从出生开始、完整中老年或实时AI聊天。
+相关测试：`node --test tests/life-cast16.test.cjs tests/life-adversity.test.cjs tests/life-portraits.test.cjs tests/life-navigation.test.cjs`。浏览器交互已用VM模拟DOM验证；上线后已在云浏览器走通短篇解锁、Robin开局与专属日常，周知夏桌面头像显示正常。尚待手机实机裁切检查。仍未实现从出生开始、完整中老年或实时AI聊天。
 
 ## 14位人物头像全部重制完成（2026-11-26）
 新增Noah、佐藤悠介、Lukas、林禾、Samuel、Ruth、森明、徐恩秀的8张写实肖像，保留已认可的6张。全14人使用独立v2素材，刷新即可显示，旧存档无需重开。新增素材保留4:5比例、最大边640像素；旧文件保留供回退。全部生成提示词和素材来源见assets/PORTRAIT_REFRESH_MANIFEST.json。
