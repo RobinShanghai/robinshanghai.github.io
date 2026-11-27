@@ -1,0 +1,33 @@
+/* Shared landing artwork, scoped to the two game entrances. */
+.life-promo{display:grid;grid-template-columns:1.35fr 1fr;overflow:hidden;margin:28px 0 0;border:1px solid #3e574a;border-radius:12px;background:#182b23;color:#f8f2e7;text-decoration:none;isolation:isolate}
+.life-promo-art{background:#263d32;align-self:stretch;display:flex;align-items:center;min-width:0}
+.life-promo-art img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain}
+.life-promo-copy{padding:30px;align-self:center;min-width:0}
+.life-promo-kicker{font-size:10px;letter-spacing:.16em;color:#dac6a0}
+.life-promo h3{font:34px/1.4 Georgia,"Songti SC",serif;margin:12px 0 4px;letter-spacing:.07em;color:#fff8eb}
+.life-promo .life-promo-tagline{font-size:17px;color:#e9d7b6;margin:0 0 16px}
+.life-promo-copy p{font-size:13px;line-height:1.85;color:#d9e2d9;margin:12px 0}
+.life-promo-cta{display:flex;justify-content:space-between;align-items:center;gap:20px;min-height:44px;width:fit-content;padding:10px 19px;margin:21px 0 12px;background:#e9d7b6;color:#20392b;border-radius:4px;font-size:14px;font-weight:600}
+.life-promo-copy small{display:block;color:#c5d0c6;font-size:11px;line-height:1.7}
+.life-promo:hover{border-color:#b49a66}.life-promo:hover .life-promo-cta{background:#fff0ce}
+.life-promo:focus-visible{outline:3px solid #b49a66;outline-offset:5px}
+.cast-intro.cast-landing{max-width:none;padding:0 0 32px}
+.cast-poster{position:relative;overflow:hidden;border-radius:12px;background:#182b23;color:#fff8eb}
+.cast-poster img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain}
+.cast-poster-caption{position:absolute;bottom:0;left:0;right:0;padding:54px 34px 24px;background:linear-gradient(transparent,rgba(12,29,21,.94));pointer-events:none}
+.cast-poster-caption .eyebrow{color:#edd5a9;margin:0;font-size:10px;letter-spacing:.22em}
+.cast-poster-caption h1{margin:5px 0 0;font:46px/1.35 Georgia,"Songti SC",serif;color:#fff8eb;letter-spacing:.12em}
+.cast-intro-copy{padding-top:24px;max-width:1000px}
+.cast-intro-copy .intro-lead{color:var(--ink);font-size:19px;line-height:1.85;margin:0 0 10px}
+.cast-intro-copy .intro-detail{font-size:14px;line-height:1.9;margin:0 0 16px}
+.cast-intro-copy .fine{font-size:13px;margin:12px 0;line-height:1.8}
+.cast-intro-copy .fine a{text-decoration:underline;text-underline-offset:3px}
+.landing-facts{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 20px;padding:0;list-style:none}
+.landing-facts li{font-size:12px;padding:5px 11px;border:1px solid var(--line);border-radius:4px;color:var(--ink)}
+@media(max-width:900px){.life-promo{grid-template-columns:1fr}.life-promo-copy{padding:24px 28px}.life-promo-art img{width:100%}}
+@media(max-width:600px){
+ .cast-poster{border-radius:8px}.cast-poster-caption{position:static;padding:15px 18px 17px;background:#182b23}
+ .cast-poster-caption h1{font-size:30px}.cast-poster-caption .eyebrow{font-size:8px;letter-spacing:.12em}
+ .cast-intro-copy{padding-top:20px}.cast-intro-copy .intro-lead{font-size:17px}.landing-facts{gap:6px}
+ .life-promo-copy{padding:22px}.life-promo h3{font-size:29px}.life-promo-cta{width:100%}
+}
