@@ -1,37 +1,82 @@
 {
   "date": "2026-11-27",
-  "kind": "Five-character photographic ensemble montage",
-  "source": "OpenAI built-in image generation; compositing existing fictional adult portraits. No real Robin likeness, no historical group photograph.",
+  "kind": "Eight-character all-star photographic ensemble",
+  "version": 2,
+  "source": "OpenAI image generation; existing fictional adult game portraits recomposed as promotional key art. Not a real group photograph.",
   "characters": [
     "jieun97",
     "ethan73",
     "camille08",
+    "maya94",
+    "noah73",
+    "ana94",
     "yusuke91",
     "lin01"
   ],
   "references": [
-    "portrait-jieun97-v2.jpg",
-    "portrait-ethan73-v2.jpg",
-    "portrait-camille08-v2.jpg",
-    "portrait-yusuke91-v2.jpg",
-    "portrait-lin01-v2.jpg"
+    "life-ensemble-v1.jpg",
+    "portrait-noah73-v2.jpg",
+    "portrait-ana94-v2.jpg",
+    "portrait-maya94-v2.jpg"
   ],
-  "prompt": "Use case: compositing. Create ONE premium cinematic ensemble photo-montage for the existing literary life-simulation game Life Variables, using these FIVE supplied fictional adult character portraits as the exact identity references. This is a collage of parallel lives across places and times, not a literal gathering in one historical location. Preserve each recognizable face, hairstyle, skin tone and signature clothes/props: reference 1 Korean heiress with black bob and ivory suit, reference 2 curly brown-haired handsome actor in burgundy jacket and cream shirt, reference 3 blonde short-haired swimmer with navy tracksuit and orange towel, reference 4 Japanese electronics student with round wire glasses and pale blue shirt, reference 5 Chinese female self-taught student with black bob and coral cardigan. Include exactly these five distinct adults, no duplicates or new faces. Landscape 16:9 poster. Arrange a graceful overlapping cast lineup across the FULL width: swimmer, heiress, actor, electronics student, self-taught student. Heiress and actor slightly foreground at center, other faces equally clear and large enough for a phone thumbnail; faces in upper-middle 20–65% of frame, enough headroom, avoid face overlap. Existing scenes softly dissolve behind them: pool light, deep forest-green office, theatre amber, repair bench and sunlit study. Harmonious film grain and photographic light, rich forest green, warm champagne, burgundy, cool turquoise accents. At bottom subtly fade shoulders into forest-green shadow with about 12% quiet dark margin, but no large blank title area. Make it emotionally inviting and polished like the key art of a character-driven film, realistic skin, not cartoon, no beauty homogenization. No text, no letters, no logos, no watermark, no frames, no harsh grid panels. Do not invent or depict Robin.",
-  "processing": "Format/size optimization only; preserve full frame and original aspect ratio. Desktop JPEG 1600x900 quality83; small JPEG 800x450 quality82.",
+  "composition_reference": {
+    "url": "https://www.behance.net/gallery/191843951/NBA-ALL-STAR-2024-EAST-V-WEST",
+    "designer": "Nicholas Lai",
+    "usage": "Visual composition reference only; original NBA image not shipped. No athlete likenesses, NBA marks or typography included."
+  },
+  "processing": "Format/size optimization only; full frame retained. JPEG 1600x900 quality83 and 800x450 quality82.",
   "assets": [
     {
-      "file": "life-ensemble-v1.jpg",
+      "file": "life-ensemble-v2.jpg",
       "width": 1600,
       "height": 900,
-      "bytes": 284020,
-      "sha256": "5f335cff07210258101d7e6ded7a93ff4a6cc1053f778a856ed94c33a5f557b6"
+      "bytes": 334385,
+      "sha256": "d0994980842ac816f4ebec3d5e9d8ea25e117d4cf5ff76e6259593793178ff6e"
     },
     {
-      "file": "life-ensemble-v1-small.jpg",
+      "file": "life-ensemble-v2-small.jpg",
       "width": 800,
       "height": 450,
-      "bytes": 82130,
-      "sha256": "a7718804cdd7745631f55df4b67f1d27c1acb0062f53a5a0a0f8bd2160c12d8b"
+      "bytes": 92890,
+      "sha256": "7504962be9da31661a4145f9e5fb0806412ace9208e964311bac60a872d3c2a6"
     }
-  ]
+  ],
+  "previous_version": {
+    "date": "2026-11-27",
+    "kind": "Five-character photographic ensemble montage",
+    "source": "OpenAI built-in image generation; compositing existing fictional adult portraits. No real Robin likeness, no historical group photograph.",
+    "characters": [
+      "jieun97",
+      "ethan73",
+      "camille08",
+      "yusuke91",
+      "lin01"
+    ],
+    "references": [
+      "portrait-jieun97-v2.jpg",
+      "portrait-ethan73-v2.jpg",
+      "portrait-camille08-v2.jpg",
+      "portrait-yusuke91-v2.jpg",
+      "portrait-lin01-v2.jpg"
+    ],
+    "prompt": "Use case: compositing. Create ONE premium cinematic ensemble photo-montage for the existing literary life-simulation game Life Variables, using these FIVE supplied fictional adult character portraits as the exact identity references. This is a collage of parallel lives across places and times, not a literal gathering in one historical location. Preserve each recognizable face, hairstyle, skin tone and signature clothes/props: reference 1 Korean heiress with black bob and ivory suit, reference 2 curly brown-haired handsome actor in burgundy jacket and cream shirt, reference 3 blonde short-haired swimmer with navy tracksuit and orange towel, reference 4 Japanese electronics student with round wire glasses and pale blue shirt, reference 5 Chinese female self-taught student with black bob and coral cardigan. Include exactly these five distinct adults, no duplicates or new faces. Landscape 16:9 poster. Arrange a graceful overlapping cast lineup across the FULL width: swimmer, heiress, actor, electronics student, self-taught student. Heiress and actor slightly foreground at center, other faces equally clear and large enough for a phone thumbnail; faces in upper-middle 20–65% of frame, enough headroom, avoid face overlap. Existing scenes softly dissolve behind them: pool light, deep forest-green office, theatre amber, repair bench and sunlit study. Harmonious film grain and photographic light, rich forest green, warm champagne, burgundy, cool turquoise accents. At bottom subtly fade shoulders into forest-green shadow with about 12% quiet dark margin, but no large blank title area. Make it emotionally inviting and polished like the key art of a character-driven film, realistic skin, not cartoon, no beauty homogenization. No text, no letters, no logos, no watermark, no frames, no harsh grid panels. Do not invent or depict Robin.",
+    "processing": "Format/size optimization only; preserve full frame and original aspect ratio. Desktop JPEG 1600x900 quality83; small JPEG 800x450 quality82.",
+    "assets": [
+      {
+        "file": "life-ensemble-v1.jpg",
+        "width": 1600,
+        "height": 900,
+        "bytes": 284020,
+        "sha256": "5f335cff07210258101d7e6ded7a93ff4a6cc1053f778a856ed94c33a5f557b6"
+      },
+      {
+        "file": "life-ensemble-v1-small.jpg",
+        "width": 800,
+        "height": 450,
+        "bytes": 82130,
+        "sha256": "a7718804cdd7745631f55df4b67f1d27c1acb0062f53a5a0a0f8bd2160c12d8b"
+      }
+    ]
+  },
+  "prompt_file": "ensemble-v2-prompt.txt"
 }
