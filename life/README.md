@@ -1,3 +1,14 @@
+## 16位人物，含Robin隐藏人生（2026-11-27）
+现在共16位：8位优势、6位逆境、2位普通与特殊人生。其中15位直接可选，Robin为隐藏人物。
+
+- 周知夏：杭州教师家庭出身的声音记录者，在创作、稳定工作、朋友与家人之间选择；配有独立AI写实头像。
+- Robin：完成顶部“Robin选择模拟”的4步短篇，再点击“解锁Robin隐藏人物”。过去已经完成的短篇存档可直接解锁。主游戏从假设的2005年18岁起点展开，音乐、舞台、工具与自由探索可以走向不同路线。全部属性、配角与个人事件为平行人生创作，不是本人传记；目前使用身份卡，等待本人肖像。
+- 两人各有3处专属重大事件、4件日常，接入12重大节点青年篇。早期决定会改变后来的选项和工作方向，条件申请使用既有种子概率。
+- 未解锁的Robin不会进入卡片或任何随机范围；解锁保存在本浏览器。导入或继续已有Robin主存档不受解锁状态阻挡。旧角色、旧肖像、原短篇与主游戏存档都保留。
+- 关键代码：cast-additions.js / new-lives-stories.js / hidden-character.js；新图来源和提示词：assets/PORTRAIT_ADDITIONS_MANIFEST.json。
+
+相关测试：`node --test tests/life-cast16.test.cjs tests/life-adversity.test.cjs tests/life-portraits.test.cjs tests/life-navigation.test.cjs`。浏览器交互已用VM模拟DOM验证，尚待手机实机裁切检查。仍未实现从出生开始、完整中老年或实时AI聊天。
+
 ## 14位人物头像全部重制完成（2026-11-26）
 新增Noah、佐藤悠介、Lukas、林禾、Samuel、Ruth、森明、徐恩秀的8张写实肖像，保留已认可的6张。全14人使用独立v2素材，刷新即可显示，旧存档无需重开。新增素材保留4:5比例、最大边640像素；旧文件保留供回退。全部生成提示词和素材来源见assets/PORTRAIT_REFRESH_MANIFEST.json。
 

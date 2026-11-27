@@ -1,10 +1,10 @@
 const {test}=require('node:test'),a=require('node:assert/strict'),fs=require('node:fs');
 const E=require('../life/story-engine.js'),S=require('../life/saves.js');
 const manifest=require('../life/assets/PORTRAIT_ASSET_MANIFEST.json');
-test('all 14 characters have distinct portrait paths; new six have packaged JPEGs',()=>{
-  a.equal(E.characters.length,14);
-  a.equal(new Set(E.characters.map(c=>c.image)).size,14);
-  for(const c of E.characters)a.match(c.image,/^[\w-]+\.jpg$/);
+test('15 public characters have distinct portraits; hidden Robin uses an identity card',()=>{
+  const publicCast=E.characters.filter(c=>!c.hidden);a.equal(publicCast.length,15);
+  a.equal(new Set(publicCast.map(c=>c.image)).size,15);
+  for(const c of publicCast)a.match(c.image,/^[\w-]+\.jpg$/);
   a.equal(manifest.assets.length,6);
   for(const asset of manifest.assets){
     a.equal(E.characters.find(c=>c.id===asset.characterId).image,asset.file);

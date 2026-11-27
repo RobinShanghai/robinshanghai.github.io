@@ -17,3 +17,6 @@
 .top{position:sticky;top:0;background:var(--paper);z-index:20}
 
 .sound-settings{border:1px solid var(--line);border-radius:8px;padding:14px;margin:20px 0}.sound-settings label{display:block;margin:12px 0;font-size:16px}.sound-settings input[type=checkbox]{width:20px;height:20px;vertical-align:middle;margin-right:6px}.sound-settings input[type=range]{width:100%;min-height:44px}.sound-settings output{margin-left:8px}
+
+/* Robin identity card: no invented photograph presented as the real user. */
+.robin-identity{background:linear-gradient(145deg,#182721,#3a5148);color:#f0dfb5;min-width:0}.robin-identity strong{font:76px/1.1 Georgia,serif}.robin-identity span{letter-spacing:.08em}

@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-27",
+  "source": "OpenAI built-in image generation; fictional adult character, not historical photo or real person.",
+  "processing": "JPEG quality 84; original 4:5 aspect ratio retained, max edge 640; no retouching.",
+  "assets": [
+    {
+      "characterId": "zhixia01",
+      "file": "portrait-zhixia01-v1.jpg",
+      "width": 512,
+      "height": 640,
+      "bytes": 59792,
+      "prompt": "Use case: photorealistic-natural. Asset: a distinctive adult character portrait for a literary Chinese life-simulation game, portrait aspect ratio 4:5. Fictional Zhou Zhixia, an 18-year-old adult woman in Hangzhou in 2001, ordinary schoolteacher family, an aspiring sound-documentary maker rather than a celebrity. Candid cinematic editorial photograph with believable human skin texture. She has an expressive heart-shaped face, warm medium skin, slightly wide-set dark eyes, a few faint freckles, long black hair in a loose side braid with wispy forehead strands, a curious half-smile. She wears a dark teal cotton jacket over a mustard striped tee, modest silver stud earrings, wired padded headphones resting around her neck. She holds a small unbranded early-2000s cassette recorder near her chest while pausing to listen to rain in an old neighborhood doorway. Wet muted grey-green alley, soft amber interior light and cool rain outside, background gentle blur. Head and shoulders with hands and recorder visible, face centered upper-middle with safe space around hair for thumbnail cropping. Fresh, approachable, memorable and attractive, not a stiff passport pose or a fashion model, no luxury office, no theatrical curtain, no sports setting. Period-appropriate simple clothes and equipment. No smartphones, no text, no logos, no watermark. One person only.",
+      "sha256": "baea79deee8ffb759f25014b0fd2fa1c17f600ec2f95ab0d80e7003b15f3b971"
+    }
+  ],
+  "robin": "No personal reference portrait supplied. Render an explicit Robin identity card; do not claim an invented face is the real user."
+}

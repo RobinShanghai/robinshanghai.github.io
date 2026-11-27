@@ -1,7 +1,7 @@
 /* Historical character chapter layered over the preserved legacy engine. */
 (function(root){
 const old=typeof module!=='undefined'?require('./engine.js'):root.LifeEngine;
-const cast=typeof module!=='undefined'?require('./adversity.js'):root.LifeCharacters;
+const cast=typeof module!=='undefined'?require('./cast-additions.js'):root.LifeCharacters;
 const hardEvent=typeof module!=='undefined'?require('./adversity-events.js'):root.AdversityEvents;
 const storyData=typeof module!=='undefined'?require('./story-events.js'):root.LifeStoryEvents;
 const probability=typeof module!=='undefined'?require('./probability.js'):root.LifeProbability;
