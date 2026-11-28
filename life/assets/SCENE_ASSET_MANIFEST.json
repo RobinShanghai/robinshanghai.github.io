@@ -137,15 +137,16 @@
     },
     {
       "media": "track",
-      "filename": "life/assets/scene-track.jpg",
+      "filename": "life/assets/scene-track-sampa.jpg",
       "label": "田径",
       "source": "AI创作的场景静物",
       "dimensions": [
         600,
         400
       ],
-      "bytes": 65451,
-      "sha256": "95bdd1da1d8c9754d8f53a7e8c03c519628b5efa3ef49e5ee1b4937e4273dfd1"
+      "bytes": 63428,
+      "sha256": "36dffdb26b6771012e50f6bb13520aa1944a783937348e33ebb89f5ad632f639",
+      "purpose": "圣保罗外围社区训练场；不具名的虚构场地"
     }
   ],
   "revision": "2026-11-28"

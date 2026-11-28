@@ -1,5 +1,5 @@
 // Published revision-2 regression suite; revision 3 is covered by life-culture.test.cjs.
-const {test}=require('node:test'),a=require('node:assert/strict'),engine=require('../life/story-engine.js'),E={...engine,createCharacter:(...args)=>{const s=engine.createCharacter(...args);delete s.flags.dialogueVersion;if(s.storyRevision===3)s.storyRevision=2;return s;}},B=require('../life/character-engine.js'),S=require('../life/saves.js');
+const {test}=require('node:test'),a=require('node:assert/strict'),engine=require('../life/story-engine.js'),E={...engine,createCharacter:(...args)=>{const s=engine.createCharacter(...args);delete s.flags.personalFollowups;delete s.flags.dialogueVersion;if(s.storyRevision===3)s.storyRevision=2;return s;}},B=require('../life/character-engine.js'),S=require('../life/saves.js');
 const ids=['ethan73','camille08','jieun97','lin01'],copy=x=>JSON.parse(JSON.stringify(x));
 function advance(s,choice=0){const sc=E.getScene(s);let i=choice;if(sc.choices[i].require&&!sc.choices[i].require(s))i=sc.choices.findIndex(c=>!c.require||c.require(s));E.choose(s,i);a.ok(E.validateCharacter(s));E.next(s);a.ok(E.validateCharacter(s));}
 function reach(s,turn){while(s.turns<turn||s.storyActive)advance(s,1);return s;}

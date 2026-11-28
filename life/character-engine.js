@@ -6,6 +6,8 @@ const hardEvent=typeof module!=='undefined'?require('./adversity-events.js'):roo
 const storyData=typeof module!=='undefined'?require('./story-events.js'):root.LifeStoryEvents;
 const probability=typeof module!=='undefined'?require('./probability.js'):root.LifeProbability;
 const depth=typeof module!=='undefined'?require('./cast-depth.js'):root.LifeCastDepth;
+const opportunities=typeof module!=='undefined'?require('./opportunities.js'):root.LifeOpportunities;
+const era=typeof module!=='undefined'?require('./era-crossroads.js'):root.LifeEraCrossroads;
 const clone=x=>JSON.parse(JSON.stringify(x)),cap=n=>Math.max(0,Math.min(100,Math.round(n)));
 const traits=['looks','intellect','wealth','status','network','art','sport','social','health'];
 const isNew=s=>s?.version===2,profile=s=>cast.find(c=>c.id===s?.characterId);
@@ -56,17 +58,27 @@ function scene(s){if(!isNew(s))return old.getScene(s);const step=s.phase==='resu
  if(s.storyVersion===1){const unique=storyData.major(s,c,step,ch,{title,text,choices});if(unique){title=unique.title;text=unique.text;choices=unique.choices;}}
  if(s.storyVersion===1&&step===7)choices.push(ch('先核对报价与工时，再决定是否参加',{skills:4,network:2},'你向合作方核对了实际成本与工作量，保留现有工作，没有投入本金。',{months:3,flag:{checkedCosts:true},media:'office'}));
  const deep=depth.apply(s,c,step,ch,{title,text,choices});({title,text,choices}=deep);
- choices=probability.attach(s,c,step,choices);
- if(s.probabilityVersion===1&&[0,3,5,6,7].includes(step)){const news=probability.active(s).map(e=>e.news);if(news.length)text+='\n当时可见的消息：'+news.join(' ');}
- return{id:'character_'+step,title,tag:step===0?'人物专属 · 起点':step===1?'时代 · 预算':step===2?'人物专属 · 合作':'人生 · 抉择',text,choices,source:step===1?c.source:null};
+ let chapter={id:'character_'+step,title,tag:step===0?'人物专属 · 起点':step===1?'时代 · 预算':step===2?'人物专属 · 合作':'人生 · 抉择',text,choices,source:step===1?c.source:null};
+ if(s.narrativeVersion===1){
+   chapter=opportunities.apply(s,c,step,ch,chapter);
+   chapter=era.apply(s,c,step,ch,chapter);
+ }
+ chapter.choices=probability.attach(s,c,step,chapter.choices);
+ if(s.probabilityVersion===1&&[0,3,5,6,7].includes(step)){
+   const news=probability.active(s).map(e=>e.news);
+   if(news.length)chapter.text+='\n当时可见的消息：'+news.join(' ');
+ }
+ return chapter;
 }
 function add(s,e){for(const [k,v]of Object.entries(e||{}))s[k]=['savings','salary'].includes(k)?Math.round(s[k]+v):cap(s[k]+v);}
 function choose(s,index){if(!isNew(s))return old.choose(s,index);if(s.phase!=='scene'||s.turns>=12)return s;const sc=scene(s),c=sc.choices[index];if(!c||c.require&&!c.require(s))return s;const odds=c.probability?probability.distribution(s,profile(s),c):null;add(s,c.effect);Object.assign(s,c.set||{});Object.assign(s.flags,c.flag||{});if(c.income)s.salary=Math.round(s.salary*c.income);if(c.bond!==undefined)s.relations[c.bond].closeness=cap(s.relations[c.bond].closeness+10);let result=c.result;
  if(odds){const resolved=probability.resolve(s,profile(s),c,rand(s),odds);result+=' '+resolved.message;s.probabilityLog.push(resolved.record);}
  else if(c.chance){const p=Math.max(.15,Math.min(.95,c.chance+(s.skills-45)/250+(s.network-40)/400+(s.turns<=3?profile(s).climate:0)));const success=rand(s)<p;if(success){Object.assign(s,c.successSet||{});Object.assign(s.flags,c.successFlag||{});if(c.successIncome)s.salary=Math.round(s.salary*c.successIncome);s.savings+=Math.round(profile(s).living*4);s.career=cap(s.career+6);result+=' 这次合作取得进展，带来额外报酬与经验。';}else{result+=' 这次没有拿到预期机会，你保留已有工作与经验，仍可选择下一步。';s.skills=cap(s.skills+3);}}
- s.savings+=Math.round((s.salary*.82/12+s.support-s.living)*c.months);s.month+=c.months;while(s.month>12){s.year++;s.month-=12;}s.ageMonths+=c.months;if(s.probabilityVersion===1){const seen=s.worldEvents;s.worldEvents=probability.occurred(s);const arrived=probability.periods.filter(e=>s.worldEvents.includes(e.id)&&!seen.includes(e.id));if(arrived.length)result+=' 这段时间的新消息：'+arrived.map(e=>e.news).join(' '); }if(s.stress>80)s.health=cap(s.health-2);s.turns++;s.history.unshift({date:s.year+'年'+s.month+'月',age:old.ageOf(s),title:sc.title,decision:c.label,result,savings:s.savings,role:s.role});s.lastEventIds.push(sc.id);s.lastEventIds=s.lastEventIds.slice(-6);s.lastResult=result;s.phase='result';return s;}
+ const workingShare=s.narrativeVersion===1&&c.label==='投入两年系统学习，减少外部工作'?.5:1;
+ s.savings+=Math.round((s.salary*workingShare*.82/12+s.support-s.living)*c.months);
+ if(s.narrativeVersion===1)opportunities.grow(s,c);s.month+=c.months;while(s.month>12){s.year++;s.month-=12;}s.ageMonths+=c.months;if(s.probabilityVersion===1){const seen=s.worldEvents;s.worldEvents=probability.occurred(s);const arrived=probability.periods.filter(e=>s.worldEvents.includes(e.id)&&!seen.includes(e.id));if(arrived.length)result+=' 这段时间的新消息：'+arrived.map(e=>e.news).join(' '); }if(s.stress>80)s.health=cap(s.health-2);s.turns++;s.history.unshift({date:s.year+'年'+s.month+'月',age:old.ageOf(s),title:sc.title,decision:c.label,result,savings:s.savings,role:s.role});s.lastEventIds.push(sc.id);s.lastEventIds=s.lastEventIds.slice(-6);s.lastResult=result;s.phase='result';return s;}
 function next(s){if(!isNew(s))return old.next(s);if(s.phase==='result'){s.phase=s.turns>=12?'end':'scene';s.currentSceneId='character_'+s.turns;}return s;}
-function validate(s){if(!probability.validate(s))return false;const c=profile(s);if(!c||s.mode!=='character'||s.name!==c.name||s.birthYear!==c.birth)return false;
+function validate(s){if(!probability.validate(s)||(s.narrativeVersion!==undefined&&s.narrativeVersion!==1))return false;const c=profile(s);if(!c||s.mode!=='character'||s.name!==c.name||s.birthYear!==c.birth)return false;
  if(!['scene','result','end'].includes(s.phase)||!Number.isInteger(s.turns)||s.turns<0||s.turns>12||!Number.isInteger(s.ageMonths)||s.ageMonths<216||s.ageMonths>1500||!Number.isInteger(s.year)||s.year!==c.start+Math.floor((c.month-1+s.ageMonths-216)/12)||s.month!==((c.month-1+s.ageMonths-216)%12)+1)return false;
  if(!s.traits||!traits.every(k=>Number.isFinite(s.traits[k])&&s.traits[k]>=0&&s.traits[k]<=100)||!s.flags||typeof s.flags!=='object'||Array.isArray(s.flags)||!Object.values(s.flags).every(v=>typeof v==='string'||typeof v==='boolean'))return false;
  if(!['savings','initialSavings','salary','living','support'].every(k=>Number.isFinite(s[k])&&Math.abs(s[k])<1e15)||!['health','family','career','skills','network','stress','freedom','fame'].every(k=>Number.isFinite(s[k])&&s[k]>=0&&s[k]<=100))return false;

@@ -11,6 +11,7 @@ function openDay(s){if(enabled(s)&&s.phase==='scene'&&scheduleOf(s)[s.storyCurso
 function choose(s,i){if(!enabled(s)||!s.storyActive){const before=s.phase;const result=base.choose(s,i);if(before==='scene'&&s.phase==='result')continued.sync(s);return result;}if(s.phase!=='scene')return s;const sc=D.day(s),c=sc.choices[i];if(!c||c.require&&!c.require(s))return s;
  for(const[k,v]of Object.entries(c.effect||{}))s[k]=k==='savings'?Math.round(s[k]+v):cap(s[k]+v);
  Object.assign(s.flags,c.flag||{});if(c.bond!==undefined)s.relations[c.bond].closeness=cap(s.relations[c.bond].closeness+5);if(c.person!==undefined)s.storyPeople[c.person].closeness=cap(s.storyPeople[c.person].closeness+5);
+ if(s.narrativeVersion===1)root.LifeOpportunities.grow(s,c);
  continued.sync(s);s.lastResult=c.result;s.dailyHistory.unshift({id:sc.id,date:s.year+'年'+s.month+'月',year:s.year,month:s.month,age:base.ageOf(s),title:sc.title,decision:c.label,result:c.result,savings:s.savings,role:s.role,beforeTurn:s.turns});s.phase='result';return s;}
 function next(s){if(enabled(s)&&s.storyActive&&s.phase==='result'){s.storyActive=null;s.storyCursor++;s.phase='scene';s.currentSceneId='character_'+s.turns;}else base.next(s);openDay(s);return s;}
 function validate(s){if(s?.storyVersion===undefined)return !['storyCursor','storyActive','dailyHistory','storyPeople'].some(k=>s?.[k]!==undefined)&&base.validateCharacter(s);

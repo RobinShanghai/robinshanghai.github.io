@@ -1,7 +1,7 @@
 /* Authored follow-ups for the nine characters without continuous dialogue. */
 (function(root){
 const rows={
-camille08:['Lea 不希望每次见面都围着成绩转。她问你，上次散步时答应留出的时间还算不算数。','pool',[
+camille08:['Lea 不希望每次见面都围着成绩转。她带了两张展览的单子，想知道你这周有没有空一起看看。','pool',[
 ['约一个不带秒表的下午',{family:5,stress:-4},'你听完了她的课程烦恼，没把聊天变成训练指导。'],['说明备赛时间，请她一起选另一个日子',{skills:3,freedom:3},'你写下能赴约的时间，也接受她未必有空。'],['承认最近没有余力，先减少社交承诺',{health:5,stress:-3},'你减少了一项安排，而不是让别人一直等。']]],
 chen01:['父亲想知道你是否需要支持。你希望得到的是资源、建议，还是被允许自己试一次？','office',[
 ['提出有限试做预算，约定独立核算',{skills:5,freedom:2},'你把试做范围与家族账目分开，资源优势没有变成无限追加资金。'],['先展示设计过程，请父亲只给意见',{family:4,skills:3},'你听取意见，也保留了最终设计判断。'],['暂不借用家族资源，缩小设计范围',{freedom:5,stress:1},'第一版更小，但责任与进度由自己掌握。']]],
@@ -21,7 +21,7 @@ seo97:['韩美说这次只想散步，不想讨论小店。你发现自己习惯
 ['先问她想聊天还是听建议',{family:5,network:2},'她选择聊天，你没有继续计算开店成本。'],['约定另一个记账时段，今晚保留给生活',{freedom:4,skills:2},'友情与工作不再挤在同一个晚上。'],['说明自己需要休息，约下次一起走走',{health:5,stress:-3},'你说清了边界，也给出了可调整的约定。']]]
 };
 const enabled=s=>s.flags.personalFollowups==='1'&&rows[s.characterId];
-function day(s,sc){if(!enabled(s))return sc;if(s.storyCursor===0)return{...sc,choices:sc.choices.map((c,i)=>({...c,flag:{...c.flag,followupOpening:String(i)}}))};if(s.storyCursor!==(s.storyRevision===3?3:2))return sc;const r=rows[s.characterId],prior=s.dailyHistory.find(h=>h.id===s.characterId+'_daily_0');return{...sc,text:sc.text+'\n'+r[0]+(prior?'\n对方记得你当时选择「'+prior.decision+'」。':''),choices:[...sc.choices,...r[2].map((c,i)=>({label:c[0],effect:c[1],result:c[2],months:0,flag:{followupRoute:String(i)},media:r[1]}))]};}
+function day(s,sc){if(!enabled(s))return sc;if(s.storyCursor===0)return{...sc,choices:sc.choices.map((c,i)=>({...c,flag:{...c.flag,followupOpening:String(i)}}))};if(s.storyCursor!==(s.storyRevision===3?3:2))return sc;const r=rows[s.characterId],prior=s.dailyHistory.find(h=>h.id===s.characterId+'_daily_0');return{...sc,text:sc.text+'\n'+r[0]+(prior?'\n你想起自己当时的决定「'+prior.decision+'」。':''),choices:[...sc.choices,...r[2].map((c,i)=>({label:c[0],effect:c[1],result:c[2],months:0,flag:{followupRoute:String(i)},media:r[1]}))]};}
 function major(s,step,sc){if(!enabled(s)||step!==9||s.flags.followupRoute===undefined)return sc;const r=rows[s.characterId][2][Number(s.flags.followupRoute)];if(!r)return sc;return{...sc,text:sc.text+'\n你们后来重新谈过：「'+r[0]+'」。'+r[2],choices:sc.choices.map((c,i)=>i===0?{...c,result:c.result+' 你也保留了那次谈话的约定：'+r[2]}:c)};}
 const api={ids:Object.keys(rows),day,major};root.LifePersonalFollowups=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);

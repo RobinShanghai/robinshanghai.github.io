@@ -34,6 +34,11 @@ function major(s,step,sc,ch){if(!enabled(s))return sc;const route=s.flags.dialog
  const result={...sc,text:sc.text+'\n'+(noah?'June 还记得你们如何安排听歌和培训时间。':'Beatriz 想起你们对训练、照护和休息的约定。')};
  if(eligible)result.choices=[...sc.choices,ch(noah?'先核对姐姐的培训日程，试排一首短合唱':'按互助与恢复计划试训，请教练复核负荷',noah?{skills:6,family:5,stress:1}:{skills:5,health:4,stress:-2},noah?'你们只约定一首歌，合写部分明确署名。June 的培训优先；排练不等于保证登台。':'你按能承担的时间试训。Teresa 看过记录再调整目标，没有承诺名次。',{flag:{dialogueOpportunity:true},bond:1,media:noah?'theatre':'street',require:x=>x.relations[1].closeness>=60&&(noah||x.health>=45),requireText:noah?'与 June 的关系至少60':'与 Beatriz 的关系至少60，健康至少45'})];return result;}
  if(step===9&&s.flags.dialogueOpportunity)return{...sc,text:sc.text+'\n'+(s.characterId==='noah73'?'那次短合唱排练已留下共同署名的记录；June 仍在继续自己的培训。':'那份试训与恢复记录还在，Beatriz 的互助有边界，你也能重新调整训练目标。')};return sc;}
-function sync(s){if(enabled(s)&&s.storyPeople?.[0]&&s.relations?.[1])s.storyPeople[0].closeness=s.relations[1].closeness;}
+const sharedContact = {noah73:1,maya94:0,lukas89:0,sam73:1,ruth73:1,aki91:1,seo97:1,ana94:1};
+function sync(s) {
+  if (!s.storyPeople?.length || !s.relations?.length) return;
+  const contact = s.narrativeVersion===1 ? sharedContact[s.characterId] : enabled(s) ? 1 : undefined;
+  if (contact!==undefined) s.storyPeople[0].closeness=s.relations[contact].closeness;
+}
 const api={ids,enabled,day,major,sync};root.LifeContinuedDialogue=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
