@@ -14,7 +14,7 @@ const sceneSymbols = {
 };
 
 const openingArt = {
-  "ethan73": ["theatre", "camera", "school", "camera", "theatre"],
+  "ethan73": ["camera", "camera", "school", "camera", "theatre"],
   "chen01": ["design", "office", "design", "design", "street"],
   "noah73": ["studio", "studio", "school", "studio", "theatre"],
   "maya94": ["theatre", "camera", "theatre", "theatre", "design"],
@@ -23,7 +23,7 @@ const openingArt = {
   "lukas89": ["school", "office", "camera", "school", "theatre"],
   "camille08": ["pool", "pool", "school", "pool", "home"],
   "lin01": ["school", "school", "office", "school", "home"],
-  "sam73": ["street", "office", "home", "school", "home"],
+  "sam73": ["home", "office", "home", "school", "home"],
   "ruth73": ["school", "school", "office", "school", "home"],
   "aki91": ["electronics", "electronics", "office", "school", "electronics"],
   "seo97": ["office", "office", "office", "school", "home"],
@@ -52,9 +52,102 @@ const dailyArt = {
   "Beatriz 记得那段路": ["street", "cafe", "track", "street"]
 };
 
+// Each title refers to a place or a physical object in that particular scene.
+// Shared choices by themselves cannot establish where a conversation happens.
+const sceneSubjects = {
+  cafe: [
+    '街角咖啡，还是下一班车', '熟人介绍的晚餐', '没有秒表的下午',
+    '聚会里的一次称赞', '笔记本合上以后', '下班后的一次邀请',
+    '姓氏之外的相处', '散场后的约会'
+  ],
+  camera: [
+    'Ben 的胶卷还没冲洗', '素妍坚持自己挑照片', '相机里没有家族头衔的下午',
+    'Paulo 的镜头停了下来', '样片的使用范围', 'Felix 不愿交出的底片'
+  ],
+  design: [
+    '样衣上的两种名字', '父亲在客厅摊开样本册', '打样师傅等你确认一个尺寸',
+    '周岚的设计团队邀请', '沈宁提出合伙的新条件', '工作室的订单上限',
+    '设计署名与客户沟通', '第一份共同签名的大订单'
+  ],
+  electronics: [
+    '维修台旁的原型机', '山本带来的研究助理机会', '山本问你想解决哪一种问题',
+    '妹妹画了一张难懂的电路图', '父亲提前收了工具', '客户说机器还是不好用',
+    '山本在记录边上写了一个问号', '晴子画出的操作面板',
+    '一位客户没有照说明操作', '客户带着旧纸条回来', '设备诊断项目的负责人'
+  ],
+  home: [
+    '家宴上的名字，不只是一个姓氏', '家宴厨房里的志浩', '饭桌上先不谈订单',
+    '饭桌上的生辰纸条', '母亲问你周末是否回家', '林燕家的一张折叠桌',
+    '折叠桌该留给谁', '奶奶留在饭盒里的纸条', '林燕把门关得重了一点',
+    '房东要求明确还款安排', 'Rose 的学校通知', 'Rose 想去同学家',
+    'Joan 留下的轮班表', 'Joan 这次没有空', '那张轮班表需要重写',
+    '母亲选了另一件外套', '课程时间与母亲复诊重叠', '父亲又问起一张收据',
+    '亲属提出替家业担保', '弟弟给你画了一张奖牌', '母亲说的“为你好”',
+    '家人问：你最近过得好吗'
+  ],
+  office: [
+    '志浩给你的不是一张空白支票', '志浩的那一页预算',
+    '父亲交来的第一份独立预算', '产能与品牌的边界',
+    '印刷前的最后一页', 'Felix 的删改意见', '一封没必要公开的信',
+    '韩美递来的小店草图', '草图旁多了一份费用清单', '网页上线后，维护才刚开始'
+  ],
+  pool: [
+    'Alex 的训练表，还有你的星期天', '名单公布前的那次计时', '泳池关灯之后',
+    'Lea 想把秒表放下', 'Ines 的转身笔记', '拍摄邀请夹在训练表里'
+  ],
+  school: [
+    '借来的旧教材有缺页', '赵敏带来的岗位与课程表', '有限时间里的学习安排',
+    '练习本里，写满了想做的事', '稳定工作，也能留一扇窗'
+  ],
+  street: ['Rose 的旧自行车', '车链又松了'],
+  studio: [
+    'June 把歌词页翻了过来', '磁带上的名字，由谁决定',
+    '有一段声音，不需要发出去', '何岚退回的节目修改单',
+    '录音之后，是职业还是喜欢', '关掉录音机之后，仍然有话想说'
+  ],
+  theatre: [
+    'Marian 留下的排练席位', '旧剧场的新演员征集', 'Marian 想起了你的那场演出',
+    '试读前的一张便条', '散场后，谁陪你收拾舞台', '门口等着的人',
+    '一场小演出的节目单', '排练室里，谁还愿意再来'
+  ],
+  track: [
+    'Beatriz 的训练时间又变了', '比赛通知与工作排班', 'Teresa 问起睡眠',
+    '试训时间与工作班次冲突', '一次参赛与长期工作之间'
+  ]
+};
+const subjectsByTitle = new Map();
+for (const [media, titles] of Object.entries(sceneSubjects)) {
+  for (const title of titles) subjectsByTitle.set(title, media);
+}
+
+const photoDescriptions = {
+  cafe: '靠窗的小桌上摆着两杯咖啡',
+  street: '一辆自行车靠在树影斑驳的街边',
+  school: '铅笔和翻开的练习本放在教室的木桌上',
+  camera: '胶片相机旁摊着接触印样',
+  studio: '一副耳机搁在开盘式录音机旁边',
+  electronics: '旧收音机的外壳已经拆开，旁边放着万用表',
+  design: '裁衣剪压在布料和打版纸上',
+  track: '一双磨旧的跑鞋放在社区跑道的白线旁',
+  home: '窗边的饭桌已经摆好碗碟',
+  office: '几个人俯在工作桌前讨论摊开的材料',
+  theatre: '观众席前方，演员正站在亮着灯的舞台上',
+  pool: '室内泳池的分道线上荡着水花'
+};
+
 function eventArt(scene, characterId) {
+  if (scene.media !== undefined) {
+    return Object.hasOwn(sceneSymbols, scene.media) ? [scene.media] : undefined;
+  }
   if (scene.id === 'character_0') return openingArt[characterId];
-  return scene.daily ? dailyArt[scene.title] : undefined;
+  if (scene.daily && Object.hasOwn(dailyArt, scene.title)) return dailyArt[scene.title];
+  const media = subjectsByTitle.get(scene.title);
+  return media ? [media] : undefined;
+}
+
+function scenePhoto(key) {
+  if (!Object.hasOwn(sceneSymbols, key)) return '';
+  return key === 'track' ? 'assets/scene-track-sampa.jpg' : `assets/scene-${key}.jpg`;
 }
 
 function choiceMedia(choice, override) {
@@ -63,13 +156,13 @@ function choiceMedia(choice, override) {
   return `<span class="choice-media" aria-hidden="true">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
       stroke-linecap="round" stroke-linejoin="round"><path d="${sceneSymbols[key]}"/></svg>
-    <img src="assets/scene-${key}.jpg" alt="" loading="lazy" decoding="async">
+    <img src="${scenePhoto(key)}" alt="" loading="lazy" decoding="async">
   </span>`;
 }
 
 function sceneHeading(title, key) {
   if (!Object.hasOwn(sceneSymbols, key)) return `<h1>${esc(title)}</h1>`;
-  return `<header class="scene-heading"><img src="assets/scene-${key}.jpg" alt="" decoding="async">
+  return `<header class="scene-heading"><img src="${scenePhoto(key)}" alt="${photoDescriptions[key]}" decoding="async">
     <h1>${esc(title)}</h1></header>`;
 }
 
