@@ -76,7 +76,25 @@ ana94:{person:['Beatriz','训练伙伴；需要兼顾弟妹与自己的生活'],
 ['告诉他有时会输，也仍喜欢运动',{family:4,stress:-3},'他问下次能否一起跑一小段。'],['陪他玩，不把游戏变成训练',{health:3,family:4},'你们停下来喝水，没有统计名次。'],['把画收好，解释今天需要休息',{health:4,freedom:2},'他知道休息并不意味着你不喜欢他的礼物。']]]]}
 };
 const ids=Object.keys(data),people=Object.fromEntries(ids.map(id=>[id,{name:data[id].person[0],role:data[id].person[1],closeness:40}]));
-function day(s){const d=data[s.characterId],n=s.storyCursor,r=d?.rows[n];if(!r)return null;const remembered=n>=2?s.flags['everyday'+(n-2)]:undefined;const prior=n>=2?d.rows[n-2][2][Number(remembered)]:null;
-return continued.day(s,{id:s.storyActive,title:r[0],text:r[1]+(prior?'\n上次你选择「'+prior[0]+'」。'+prior[2]:''),tag:'日常 · 生活片刻',daily:true,choices:r[2].map((c,i)=>({label:c[0],months:0,effect:c[1],result:c[2],flag:{['everyday'+n]:String(i)},...(i===0?(continued.enabled(s)?{bond:1}:{person:0}):{}),media:d.media}))});}
-const api={ids,people,day};root.LifeCastDaily=api;if(typeof module!=='undefined')module.exports=api;
+// Indices refer to the character's [mentor, friend] pair. Missing entries affect neither person.
+const contacts = {
+  noah73: [[1,1], [1,1], [1,1], [1,1]],
+  maya94: [[0,0], [0,0], [0,0], [1,0]],
+  lukas89: [[0,0], [1,1], [0,0], [0,1,1]],
+  sam73: [[1,1,0], [1], [1,1,1], [1,1,1]],
+  ruth73: [[1,1,1], [0], [1,1], []],
+  aki91: [[,1], [1,1], [,1], [1,0]],
+  seo97: [[1,1], [,,0], [1,1,1], [1,1]],
+  ana94: [[1,1,1], [0,,0], [1,1,1], []]
+};
+function peopleFor(s) {
+  const cast = s.relations || [];
+  if (Object.hasOwn(data,s.characterId)) return cast.slice();
+  return [...cast,...(s.storyPeople || [])];
+}
+
+function day(s){const d=data[s.characterId],n=s.storyCursor,r=d?.rows[n];if(!r)return null;
+  const prior = n>=2?s.dailyHistory.find(h=>h.id===s.characterId+'_daily_'+(n-2)):null;
+return continued.day(s,{id:s.storyActive,title:r[0],text:r[1]+(prior?'\n上次你选择「'+prior.decision+'」。'+prior.result:''),tag:'日常 · 生活片刻',daily:true,choices:r[2].map((c,i)=>({label:c[0],months:0,effect:c[1],result:c[2],flag:{['everyday'+n]:String(i)},...(s.narrativeVersion===1?{bond:contacts[s.characterId][n][i]}:i===0?(continued.enabled(s)?{bond:1}:{person:0}):{}),media:d.media}))});}
+const api={ids,people,peopleFor,day};root.LifeCastDaily=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);

@@ -4,7 +4,7 @@ const rows={
 ethan73:['散场后的约会','Claire','排练散场后，Claire 想约你吃饭，却不想每次谈话都变成试镜复盘。你习惯在别人面前表现得从容，这一次可以不扮演任何角色。','actorDinner','你曾给朋友留过不谈工作的晚餐，知道陪伴也可以没有任务。','排练时间'],
 camille08:['没有秒表的下午','Julien','Julien 想与你度过一个没有训练表的下午。你享受游泳，也担心关系会挤占恢复时间；他希望被认真倾听，而不是成为日程中的一个空格。','swimNotes','你曾认真记录身体反馈，可以把同样的耐心用于讨论自己的精力。','恢复时间'],
 jieun97:['姓氏之外的相处','李俊赫','李俊赫想约你去一家普通小店，不希望这次见面被当作家族合作。你有资源，也想知道彼此喜欢的究竟是什么。','heirListening','你曾听哥哥说完他的顾虑，理解询问比猜测更有用。','私人空间'],
-lin01:['下班后的一次邀请','林然','林然约你下班后散步。你算着车费和明天的班次，又担心解释预算会让气氛尴尬。他也有自己的工作安排，愿意听具体的想法。','linStudySpace','你曾和林燕协商过同住时间，知道有限资源也可以被坦诚讨论。','交通与班次']};
+lin01:['下班后的一次邀请','林然','林然约你下班后散步。你算着车费和明天的班次，又担心解释预算会让气氛尴尬。他也有自己的工作安排，愿意听具体的想法。','linVisitPlan','你和林燕商量过怎样一起回去看奶奶。上次是先对排班，再定日子，这回也可以这样问。','交通与班次']};
 function apply(s,step,scene,ch){const r=rows[s.characterId];if(!r||s.flags.relationshipVersion!=='1')return scene;
 if(step===4){const [title,name,context,memory,recall,limit]=r;return {...scene,title,text:context+'\n'+(s.flags[memory]?recall:s.stress>=55?'最近的压力让你更想尽快给出答案，但你仍可以先停下来想想。':'你还在摸索适合自己的相处方式，不必立刻证明什么。'),choices:[
 ch('认真约会，先谈清彼此能投入的时间',{family:8,stress:2},`你与${name}约定先尝试相处，不承诺无限陪伴。`,{set:{partner:name},flag:{love:'together',relationshipResponse:'talk'},media:'cafe'}),

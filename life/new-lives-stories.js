@@ -17,7 +17,7 @@ function major(s,c,step,ch,existing){
   title='磁带上的名字，由谁决定';text='一位街坊录下很动人的家庭故事，却在交稿前请求匿名。何岚要求逐条确认可公开内容，叶舟已经画好带姓名的封面。母亲觉得机会难得，也担心你得罪熟人。你想怎样继续？';
   choices=[
    ch('重新确认授权，制作匿名声音故事',{skills:8,stress:3},'你重录容易辨认的段落，明确撤回边界。编辑工作变慢，但可以带着这份标准继续征稿。',{bond:0,flag:{personalRoute:'sound',consentRecord:true},media:'office'}),
-   ch('保留助教收入，暂缓这一期节目',{career:6,stress:-4,family:4},'你把空出来的时间用于备课；不公开这段录音，也不把稳定工作当成创作失败。',{income:1.1,set:{role:'助教与周末记录者'},flag:{personalRoute:'steady'},media:'school'}),
+   ch(s.flags.path==='craft'?'保留助教工作，暂缓这一期节目':'接受助教工作，暂缓这一期节目',{career:6,stress:-4,family:4},'你把空出来的时间用于备课；不公开这段录音，也不把稳定工作当成创作失败。',{income:1.1,set:{role:'助教与周末记录者'},flag:{personalRoute:'steady'},media:'school'}),
    ch('与叶舟改做没有私人信息的街景专题',{network:7,savings:-u/2},'你们改录街道声，重谈封面署名和工作量。原来的私人录音没有发布。',{bond:1,require:x=>x.savings>=u/2,requireText:'现金够支付半个月生活费的制作成本',flag:{personalRoute:'joint',sharedCredit:true},media:'street'}),
    ch('把录音交回本人，只留下自己的听后笔记',{freedom:8,stress:-5},'你没有公开作品，但保住了一次私人交流。并非每次倾听都需要变成节目。',{flag:{personalRoute:'private'},media:'home'})];
  }

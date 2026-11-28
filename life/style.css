@@ -36,3 +36,8 @@
  .choices .choice{padding:13px 10px;gap:8px}
 }
 .choice .letter svg{display:block;width:19px;height:19px;color:#746042}
+
+.scene-tools{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:1.3rem}
+.scene-tools a,.scene-tools button{font-size:.9rem;color:var(--green);min-height:44px;padding:.6rem 0}
+.story .choice{font-size:1rem;min-height:52px}
+@media(max-width:760px){.game .profile{display:flex;align-items:center}.game .profile-photo{width:70px;height:82px;min-width:70px}.game .profile-photo .photo-label{display:none}.game .profile-body{padding:0 14px}.game .profile-body p{margin:.2rem 0}.game .profile-photo .robin-identity{min-height:82px;height:82px}.game .profile-photo .robin-identity strong{font-size:28px}.game .profile-photo .robin-identity span{display:none}}

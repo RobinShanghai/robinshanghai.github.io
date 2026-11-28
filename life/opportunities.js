@@ -121,6 +121,9 @@ const encounters = {
 
 function apply(s, c, step, ch, scene) {
   const item = encounters[c.id];
+  if (step===5 && (s.stress>=60 || s.health<72)) {
+    scene={...scene,choices:[...scene.choices,ch('把密集课程推到下期，先把休息日排回去',{health:9,stress:-10,career:-2},'你空出了原先要赶路的那一天。等能睡个整觉，才重新翻开课程表。',{months:3,flag:{protectedRest:true}})]};
+  }
   if (step === 0) return {...scene, title:item.opening};
   if (step === 3) {
     const choices = [
@@ -129,7 +132,7 @@ function apply(s, c, step, ch, scene) {
       ch('请'+c.mentor+'陪你准备，自己出面争取',{network:4,skills:3},c.mentor+'指出一个你没留意的细节。轮到你开口时，对方把时间留给了你。',{flag:{entry:'mentor'},bond:0,chance:.53}),
       ch('先把答复缓一缓，保住手头的安排',{freedom:6,stress:-5},'你说明这次能承担的范围，把原先约好的人和事排回日程。',{flag:{entry:'defer'}})
     ];
-    for (const [key,available] of [['social',s.traits.social>=78],['insight',s.traits.intellect>=86]]) {
+    for (const [key,available] of [['social',s.traits.social+(s.flags.path==='spotlight'?3:0)>=78],['insight',s.traits.intellect+(s.flags.trained?2:0)>=86]]) {
       if (!available) continue;
       const [label,result]=item[key];
       choices.push(ch(label,key==='social'?{network:8,family:2}:{skills:9,career:2},result,{flag:{invitation:key,entry:key}}));
