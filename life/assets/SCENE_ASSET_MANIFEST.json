@@ -50,6 +50,103 @@
       ],
       "bytes": 99164,
       "sha256": "35f1d3157fb1b971ce69dae1cb1fcd0e5bc6279720c858d9c6e571e348bb803d"
+    },
+    {
+      "media": "cafe",
+      "filename": "life/assets/scene-cafe.jpg",
+      "label": "交谈",
+      "source": "AI创作的场景静物",
+      "dimensions": [
+        600,
+        400
+      ],
+      "bytes": 55013,
+      "sha256": "e8b3c0f9fa0f9ae5ebdda55a9a312d2cc89092b7a1e6fdf2772e39780cffd1cb"
+    },
+    {
+      "media": "street",
+      "filename": "life/assets/scene-street.jpg",
+      "label": "散步",
+      "source": "AI创作的场景静物",
+      "dimensions": [
+        600,
+        400
+      ],
+      "bytes": 57447,
+      "sha256": "b4b911b1329a12a4d56b02a0ba79bd28935cd5057cfde89c7ee5f83b19dcb4a1"
+    },
+    {
+      "media": "school",
+      "filename": "life/assets/scene-school.jpg",
+      "label": "学习",
+      "source": "AI创作的场景静物",
+      "dimensions": [
+        600,
+        400
+      ],
+      "bytes": 37701,
+      "sha256": "f8ef68b11a31c840b44308cf938cd55baf5bd763459259ce9537f250e57dfd85"
+    },
+    {
+      "media": "camera",
+      "filename": "life/assets/scene-camera.jpg",
+      "label": "摄影",
+      "source": "AI创作的场景静物",
+      "dimensions": [
+        600,
+        400
+      ],
+      "bytes": 40623,
+      "sha256": "e852e0966a5b0cb94f2b38c246fdce3b718fb61cf779e44bbd6d23ce739ea79d"
+    },
+    {
+      "media": "studio",
+      "filename": "life/assets/scene-studio.jpg",
+      "label": "录音",
+      "source": "AI创作的场景静物",
+      "dimensions": [
+        600,
+        400
+      ],
+      "bytes": 45054,
+      "sha256": "e9ef8610c90a5ca34466da42577dc5e0d8c6a22860b33e183cd6f96b9ee4293a"
+    },
+    {
+      "media": "electronics",
+      "filename": "life/assets/scene-electronics.jpg",
+      "label": "电子维修",
+      "source": "AI创作的场景静物",
+      "dimensions": [
+        600,
+        400
+      ],
+      "bytes": 56549,
+      "sha256": "8f3d2dd77a829c0a0c561bce6c785069c78c8dda5cc861abbc9826572d8b00b6"
+    },
+    {
+      "media": "design",
+      "filename": "life/assets/scene-design.jpg",
+      "label": "服装设计",
+      "source": "AI创作的场景静物",
+      "dimensions": [
+        600,
+        400
+      ],
+      "bytes": 49083,
+      "sha256": "ade5d16ebc54ebf0663b61985d6bce680a364b4f0feb48afca33e8fd6a5f3830"
+    },
+    {
+      "media": "track",
+      "filename": "life/assets/scene-track.jpg",
+      "label": "田径",
+      "source": "AI创作的场景静物",
+      "dimensions": [
+        600,
+        400
+      ],
+      "bytes": 65451,
+      "sha256": "95bdd1da1d8c9754d8f53a7e8c03c519628b5efa3ef49e5ee1b4937e4273dfd1"
     }
-  ]
+  ],
+  "revision": "2026-11-28"
 }
